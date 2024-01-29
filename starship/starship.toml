@@ -1,43 +1,30 @@
-# Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """
-$directory\
-$git_branch\
-$git_state\
-$git_status\
-$cmd_duration\
-$line_break\
-$character"""
+palette = "colors"
 
-add_newline = false
+add_newline = false # disable multiline prompt
+
+format = '''
+[   ](fg:dir_fg_icon bg:dir_bg)$directory
+'''
+
+right_format = '''
+$git_branch
+'''
+
+[palettes.colors]
+dir_fg_icon = "#8e8aa9"
+dir_fg = "#a38c8c"
+dir_bg = "#171717"
+dir_2 = "#151515"
+dir_3 = "#131313"
+dir_4 = "#111111"
 
 [directory]
-style = "cyan"
-
-[character]
-success_symbol = "[](yellow)"
-error_symbol = "[](yellow)"
+truncation_length = 2
+style = "fg:dir_fg bg:dir_bg"
+format = "[$path]($style)[ ](bg:dir_2)[ ](bg:dir_3)[ ](bg:dir_4)"
 
 [git_branch]
-format = "[$branch]($style)"
-style = "green"
-
-[git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
-
-[git_state]
-format = '\([$state($progress_current/$progress_total)]($style)\) '
-style = "green"
-
-[cmd_duration]
-format = "[$duration]($style) "
-style = "purple"
+style = "fg:dir_fg bg:dir_bg"
+format = "[ ](bg:dir_4)[ ](bg:dir_3)[ ](bg:dir_2)[ $branch]($style)[   ](fg:dir_fg_icon bg:dir_bg)"

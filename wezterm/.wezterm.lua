@@ -4,44 +4,29 @@ local config = {
 
 	-- Font settings
 	-- font = wezterm.font({ family = "JetBrainsMono Nerd Font" }),
-	-- font = wezterm.font_with_fallback({ "Iosevka", "JetBrainsMono Nerd Font" }),
 	font = wezterm.font({ family = "Iosevka Nerd Font" }),
 	-- font = wezterm.font_with_fallback({ "Dank Mono", "JetBrainsMono Nerd Font" }),
-	-- font = wezterm.font_with_fallback({ "Iosevka Nerd Font", "JetBrainsMono Nerd Font" }),
 
-	dpi = 144,
 	font_size = 21,
 	line_height = 1.4,
-	cell_width = 1.0,
 
 	initial_cols = 81,
 	initial_rows = 15,
+	allow_square_glyphs_to_overflow_width = "Never",
 
 	-- Window settings
 	window_decorations = "RESIZE",
 	enable_tab_bar = false,
 	window_padding = {
-		left = 16,
-		right = 16,
-		top = 16,
-		bottom = 16,
+		left = 22,
+		right = 22,
+		top = 24,
+		bottom = 24,
 	},
 
 	-- Theme settings
 	color_scheme = "Mountain_dark",
 	color_schemes = {
-		["gruvbox_material_dark_hard"] = {
-			foreground = "#D4BE98",
-			background = "#1D2021",
-			cursor_bg = "#D4BE98",
-			cursor_border = "#D4BE98",
-			cursor_fg = "#1D2021",
-			selection_bg = "#D4BE98",
-			selection_fg = "#3C3836",
-
-			ansi = { "#1d2021", "#ea6962", "#a9b665", "#d8a657", "#7daea3", "#d3869b", "#89b482", "#d4be98" },
-			brights = { "#eddeb5", "#ea6962", "#a9b665", "#d8a657", "#7daea3", "#d3869b", "#89b482", "#d4be98" },
-		},
 		["Mountain_dark"] = {
 			foreground = "#f0f0f0",
 			background = "#0f0f0f",
@@ -60,7 +45,7 @@ local config = {
 	prefer_egl = true,
 	animation_fps = 240,
 	max_fps = 240,
-	webgpu_power_preference = "LowPower",
+	webgpu_power_preference = "HighPerformance",
 	webgpu_preferred_adapter = {
 		backend = "Metal",
 		device = 0,
