@@ -23,7 +23,7 @@ dir_4 = "#111111"
 [directory]
 truncation_length = 2
 style = "fg:dir_fg bg:dir_bg"
-format = "[$path]($style)[ ](bg:dir_2)[ ](bg:dir_3)[ ](bg:dir_4)"
+format = "[$path ]($style)[ ](bg:dir_2)[ ](bg:dir_3)[ ](bg:dir_4)"
 
 [git_branch]
 style = "fg:dir_fg bg:dir_bg"

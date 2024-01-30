@@ -1,3 +1,4 @@
+# Startup commands
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
@@ -23,6 +24,5 @@ yabai -m config mouse_action1 move
 # set modifier + right-click drag to resize window 
 yabai -m config mouse_action2 resize
 
-# modify window shadows (default: on, options: on, off, float)
-# example: show shadows only for floating windows
+# modify window shadows 
 yabai -m config window_shadow off
