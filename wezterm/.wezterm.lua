@@ -8,7 +8,7 @@ local config = {
 	-- font = wezterm.font_with_fallback({ "Dank Mono", "JetBrainsMono Nerd Font" }),
 
 	font_size = 21,
-	line_height = 1.4,
+	line_height = 1.3,
 
 	initial_cols = 81,
 	initial_rows = 15,
@@ -45,7 +45,9 @@ local config = {
 	prefer_egl = true,
 	animation_fps = 240,
 	max_fps = 240,
-	webgpu_power_preference = "HighPerformance",
+
+	-- GPU Settings
+	webgpu_power_preference = "HighPerformance", -- This is useless for integrated GPU but anyway
 	webgpu_preferred_adapter = {
 		backend = "Metal",
 		device = 0,
