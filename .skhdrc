@@ -1,10 +1,10 @@
 # ------------------Windows------------------
 
 # change window focus within space
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - h : yabai -m window --focus west
-alt - l : yabai -m window --focus east
+alt + shift - j : yabai -m window --focus south
+alt + shift - k : yabai -m window --focus north
+alt + shift - h : yabai -m window --focus west
+alt + shift - l : yabai -m window --focus east
 
 # swap windows
 shift + alt - j : yabai -m window --swap south
@@ -26,9 +26,14 @@ shift + alt - n : yabai -m window --space next;
 shift + alt - m : yabai -m window --toggle zoom-fullscreen
 shift + alt - u : yabai -m window --toggle zoom-parent
 
-# resize terminal
-ctrl + alt - t : yabai -m window --toggle float && yabai -m window --resize abs:1744:1097
+# resize wezterm
+ctrl + alt - t : yabai -m window --toggle float && yabai -m space --layout float && yabai -m window --resize abs:1744:1097
 
+# resize neovide
+ctrl + alt - n : yabai -m window --toggle float && yabai -m space --layout float && yabai -m window --resize abs:1750:1088
+
+# neovide automation
+ctrl + alt - g: yabai -m window $(yabai -m query --windows | jq ".[] | select(.app == \"Neovide\")" | jq ".id") --focus && yabai -m window $(yabai -m query --windows | jq ".[] | select(.app == \"Neovide\")" | jq ".id") --space 4 --focus && yabai -m space --layout float && yabai -m window mouse --focus && yabai -m window mouse --resize abs:1750:1088 && yabai -m window $(yabai -m query --windows | jq ".[] | select(.app == \"WezTerm\")" | jq ".id") --resize abs:1744:1097
 
 
 # ------------------Space layouts------------------
@@ -51,7 +56,6 @@ shift + alt - x : yabai -m space --mirror x-axis
 shift + alt - e : yabai -m space --balance
 
 
-
 # ------------------Sizes------------------
 
 # increase window size
@@ -65,7 +69,6 @@ cmd + shift - w : yabai -m window --resize top:0:5
 cmd + shift - a : yabai -m window --resize left:5:0
 cmd + shift - s : yabai -m window --resize bottom:0:-5
 cmd + shift - d : yabai -m window --resize right:-5:0
-
 
 
 # ------------------Spaces------------------
@@ -101,11 +104,9 @@ ctrl + shift + alt - h : yabai -m space --move prev
 ctrl + shift + alt - l : yabai -m space --move next
 
 
-
 #  ------------------Services------------------
 
 # stop/start/restart yabai
 ctrl + alt - q : yabai --stop-service
 ctrl + alt - s : yabai --start-service
 ctrl + alt - r : yabai --restart-service
-
