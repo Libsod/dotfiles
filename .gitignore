@@ -1,0 +1,4 @@
+# Fish related files 
+fish/fish_variables
+fish/functions/fisher
+fish/completions/fisher
