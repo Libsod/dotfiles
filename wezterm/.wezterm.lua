@@ -3,11 +3,11 @@ local wezterm = require("wezterm")
 local config = {
 
 	-- Font settings
-	-- font = wezterm.font({ family = "JetBrainsMono Nerd Font" }),
-	font = wezterm.font({ family = "Iosevka Nerd Font" }),
+	font = wezterm.font_with_fallback({ "Iosevka Nerd Font", "JetBrainsMono Nerd Font" }),
+	-- font = wezterm.font_with_fallback({ "JetBrainsMono Nerd Font" }),
 	-- font = wezterm.font_with_fallback({ "Dank Mono", "JetBrainsMono Nerd Font" }),
 
-	font_size = 21,
+	font_size = 20,
 	line_height = 1.3,
 
 	initial_cols = 81,
