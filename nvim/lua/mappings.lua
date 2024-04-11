@@ -5,10 +5,20 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 -- Spider
-map({ "n", "v" }, "w", ":lua require('spider').motion('w')<CR>", { silent = true, noremap = true })
-map({ "n", "v" }, "e", ":lua require('spider').motion('e')<CR>", { silent = true, noremap = true })
-map({ "n", "v" }, "b", ":lua require('spider').motion('b')<CR>", { silent = true, noremap = true })
-map({ "n", "v" }, "ge", ":lua require('spider').motion('ge')<CR>", { silent = true, noremap = true })
+map({ "n", "o", "x" }, "w", function()
+  require("spider").motion "w"
+end, { silent = true, noremap = true })
+map({ "n", "o", "x" }, "e", function()
+  require("spider").motion "e"
+end, { silent = true, noremap = true })
+map({ "n", "o", "x" }, "b", function()
+  require("spider").motion "b"
+end, { silent = true, noremap = true })
+map({ "n", "o", "x" }, "ge", function()
+  require("spider").motion "ge"
+end, { silent = true, noremap = true })
+
+map("n", "cw", "c<cmd>lua require('spider').motion('e')<CR>")
 
 -- Hop
 map("n", "gw", ":HopWordMW<CR>", { silent = true, noremap = true })
@@ -58,7 +68,16 @@ map(
 )
 
 -- Auto-session
-map("n", "<leader>ss", ":SessionSave<CR>", { silent = true, noremap = true, desc = "Session save" })
-map("n", "<leader>sr", ":SessionRestore<CR>", { silent = true, noremap = true, desc = "Session restore" })
+map("n", "<leader>ws", ":SessionSave<CR>", { silent = true, noremap = true, desc = "Session save" })
+map("n", "<leader>wr", ":SessionRestore<CR>", { silent = true, noremap = true, desc = "Session restore" })
 map("n", "<leader>fss", ":Autosession search<CR>", { silent = true, noremap = true, desc = "Auto-session search" })
 map("n", "<leader>fsd", ":Autosession delete<CR>", { silent = true, noremap = true, desc = "Auto-session delete" })
+
+-- Substitute
+map("n", "s", require("substitute").operator, { noremap = true })
+map("n", "ss", require("substitute").line, { noremap = true })
+map("n", "S", require("substitute").eol, { noremap = true })
+map("x", "s", require("substitute").visual, { noremap = true })
+map("n", "<leader>s", require("substitute.range").operator, { noremap = true })
+map("x", "<leader>s", require("substitute.range").visual, { noremap = true })
+map("n", "<leader>ss", require("substitute.range").word, { noremap = true })

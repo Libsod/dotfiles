@@ -258,4 +258,12 @@ return {
       require "configs.auto-session"
     end,
   },
+
+  {
+    "gbprod/substitute.nvim",
+    keys = { "s", "ss", "s", "<leader>s", "<leader>ss" },
+    opts = function()
+      return require "configs.substitute"
+    end,
+  },
 }

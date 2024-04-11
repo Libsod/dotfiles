@@ -33,6 +33,7 @@ M.ui = {
   hl_override = {
     Error = { fg = "NONE" },
     Search = { fg = "NONE", bg = "#212121" },
+    Visual = { bg = "#212121" },
     IncSearch = { fg = "#0F0F0F", bg = "#AB8AAC" },
     NormalFloat = { bg = "#0F0F0F" },
     WhichKeyFloat = { bg = "#0F0F0F" },
