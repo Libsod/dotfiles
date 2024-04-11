@@ -14,14 +14,14 @@ return {
       require("configs.lspconfig").defaults()
       require "configs.lsp.lspconfig"
     end,
-    dependencies = {
-      {
-        "dnlhc/glance.nvim",
-        config = function()
-          require "configs.glance"
-        end,
-      },
-    },
+  },
+
+  {
+    "dnlhc/glance.nvim",
+    cmd = { "Glance" },
+    config = function()
+      require "configs.glance"
+    end,
   },
 
   {
