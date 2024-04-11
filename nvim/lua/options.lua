@@ -15,4 +15,7 @@ opt.ttimeoutlen = 0
 opt.updatetime = 100
 opt.termguicolors = true
 g.loaded_remote_plugins = 0
-o.cursorlineopt = "both" -- to enable cursorline!
+o.cursorlineopt = "both"
+
+-- For auto-session plugin
+o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

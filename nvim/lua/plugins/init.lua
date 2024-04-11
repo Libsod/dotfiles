@@ -250,4 +250,12 @@ return {
       require "configs.local-highlight"
     end,
   },
+
+  {
+    "rmagatti/auto-session",
+    cmd = { "SessionSave", "SessionRestore", "Autosession" },
+    config = function()
+      require "configs.auto-session"
+    end,
+  },
 }
