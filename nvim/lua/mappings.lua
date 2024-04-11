@@ -18,7 +18,7 @@ map({ "n", "o", "x" }, "ge", function()
   require("spider").motion "ge"
 end, { silent = true, noremap = true })
 
-map("n", "cw", "c<cmd>lua require('spider').motion('e')<CR>")
+map("n", "cw", "c<CMD>lua require('spider').motion('e')<CR>")
 
 -- Hop
 map("n", "gw", ":HopWordMW<CR>", { silent = true, noremap = true })
@@ -68,8 +68,8 @@ map(
 )
 
 -- Auto-session
-map("n", "<leader>ws", ":SessionSave<CR>", { silent = true, noremap = true, desc = "Session save" })
-map("n", "<leader>wr", ":SessionRestore<CR>", { silent = true, noremap = true, desc = "Session restore" })
+map("n", "<leader>sr", ":SessionRestore<CR>", { silent = true, noremap = true, desc = "Session restore" })
+map("n", "<leader>ss", ":SessionSave<CR>", { silent = true, noremap = true, desc = "Session save" })
 map("n", "<leader>fss", ":Autosession search<CR>", { silent = true, noremap = true, desc = "Auto-session search" })
 map("n", "<leader>fsd", ":Autosession delete<CR>", { silent = true, noremap = true, desc = "Auto-session delete" })
 
@@ -78,6 +78,30 @@ map("n", "s", require("substitute").operator, { noremap = true })
 map("n", "ss", require("substitute").line, { noremap = true })
 map("n", "S", require("substitute").eol, { noremap = true })
 map("x", "s", require("substitute").visual, { noremap = true })
-map("n", "<leader>s", require("substitute.range").operator, { noremap = true })
-map("x", "<leader>s", require("substitute.range").visual, { noremap = true })
-map("n", "<leader>ss", require("substitute.range").word, { noremap = true })
+
+-- Spectre
+map("n", "<leader>S", ':lua require("spectre").toggle()<CR>', { silent = true, desc = "Toggle Spectre" })
+map(
+  "v",
+  "<leader>sw",
+  '<esc>:lua require("spectre").open_visual()<CR>',
+  { silent = true, desc = "Search current word" }
+)
+map(
+  "n",
+  "<leader>sw",
+  ':lua require("spectre").open_visual({select_word=true})<CR>',
+  { silent = true, desc = "Search current word" }
+)
+map(
+  "n",
+  "<leader>sf",
+  ':lua require("spectre").open_file_search()<CR>',
+  { silent = true, desc = "Search on current file" }
+)
+map(
+  "n",
+  "<leader>sp",
+  ':lua require("spectre").open_file_search({select_word=true})<CR>',
+  { silent = true, desc = "Search current word on current file" }
+)

@@ -261,9 +261,14 @@ return {
 
   {
     "gbprod/substitute.nvim",
-    keys = { "s", "ss", "s", "<leader>s", "<leader>ss" },
+    keys = { "s", "ss", "S" },
     opts = function()
       return require "configs.substitute"
     end,
+  },
+
+  {
+    "nvim-pack/nvim-spectre",
+    cmd = { "Spectre" },
   },
 }
