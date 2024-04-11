@@ -1,6 +1,10 @@
 local M = {}
 local map = vim.keymap.set
 
+-- Lsp-signature
+local signature = require "lsp_signature"
+local signature_setup = require("configs.lsp-signature").options
+
 local excluded_servers = {
   "clangd",
   "tsserver",
@@ -34,6 +38,9 @@ M.on_attach = function(client, bufnr)
   map("n", "gr", ":Glance references<CR>", { silent = true, noremap = true, desc = "Lsp Go to references" })
   map("n", "gy", ":Glance type_definitions<CR>", { silent = true, noremap = true, desc = "Lsp Go to type definitions" })
   map("n", "gi", ":Glance implementations<CR>", { silent = true, noremap = true, desc = "Lsp Go to implementation" })
+
+  -- Lsp-signature
+  signature.on_attach(signature_setup, bufnr)
 
   map("n", "<leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))

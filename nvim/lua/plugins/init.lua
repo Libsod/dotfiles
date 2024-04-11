@@ -14,6 +14,15 @@ return {
       require("configs.lspconfig").defaults()
       require "configs.lsp.lspconfig"
     end,
+    dependencies = {
+      {
+        "ray-x/lsp_signature.nvim",
+        config = function()
+          local opts = require("configs.lsp-signature").cfg
+          require("lsp_signature").setup(opts)
+        end,
+      },
+    },
   },
 
   {
