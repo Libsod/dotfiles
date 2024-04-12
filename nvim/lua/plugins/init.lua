@@ -36,7 +36,6 @@ return {
   {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble", "TroubleRefresh" },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require "configs.trouble"
     end,
@@ -203,6 +202,7 @@ return {
 
   {
     "NeogitOrg/neogit",
+    branch = "nightly",
     cmd = "Neogit",
     dependencies = {
       "nvim-lua/plenary.nvim", -- required
@@ -279,5 +279,13 @@ return {
   {
     "nvim-pack/nvim-spectre",
     cmd = { "Spectre" },
+  },
+
+  {
+    "abecodes/tabout.nvim",
+    event = "InsertCharPre",
+    config = function()
+      require "configs.tabout"
+    end,
   },
 }
