@@ -1,8 +1,15 @@
 require "nvchad.mappings"
 local map = vim.keymap.set
 
+-- Faster opening of vim-cli mode
 map("n", ";", ":", { desc = "CMD enter command mode" })
+
+-- More convenient escape
 map("i", "jk", "<ESC>")
+
+-- Dealing with word wrap
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { silent = true, expr = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { silent = true, expr = true })
 
 -- Spider
 map({ "n", "o", "x" }, "w", function()
@@ -42,7 +49,7 @@ map("n", "[t", function()
 end, { silent = true, noremap = true, desc = "Previous todo comment" })
 
 -- Neogit
-map("n", "<leader>n", ":Neogit<CR>", { silent = true, noremap = true })
+map("n", "<leader>gn", ":Neogit<CR>", { silent = true, noremap = true })
 
 -- Telescope
 map(
@@ -52,6 +59,8 @@ map(
   { silent = true, noremap = true, desc = "Find all" }
 )
 map("n", "<leader>ft", ":TodoTelescope<CR>", { silent = true, noremap = true })
+map("n", "<leader>fg", ":Telescope grep_string<CR>", { silent = true, noremap = true })
+map("n", "<leader>fr", ":Telescope treesitter<CR>", { silent = true, noremap = true })
 
 -- Oil
 map("n", "<leader>o", ":Oil --float<CR>", { silent = true, noremap = true })
@@ -105,3 +114,6 @@ map(
   ':lua require("spectre").open_file_search({select_word=true})<CR>',
   { silent = true, desc = "Search current word on current file" }
 )
+
+-- Noice
+map("n", "<leader>nn", ":NoiceDismiss<CR>", { silent = true, noremap = true })
