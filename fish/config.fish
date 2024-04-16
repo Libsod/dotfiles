@@ -4,8 +4,8 @@ zoxide init --cmd cd fish | source
 
 starship init fish | source
 
-alias ll="exa -1 -l -a -g --icons --git"
-alias llt="exa -1 -a --icons --tree --level=2 --git-ignore"
+alias ll="eza -1 -l -a -g --icons --git"
+alias llt="eza -1 -a --icons --tree --level=2 --git-ignore"
 alias scf="source ~/.config/fish/config.fish"
 alias la="ls -la"
 alias bu="brew update && brew upgrade"
