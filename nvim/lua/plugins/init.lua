@@ -51,6 +51,16 @@ return {
     end,
     dependencies = {
       "lukas-reineke/cmp-under-comparator",
+      {
+        "L3MON4D3/LuaSnip",
+        build = "make install_jsregexp",
+        dependencies = "rafamadriz/friendly-snippets",
+        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+        config = function(_, opts)
+          require("luasnip").config.set_config(opts)
+          require "nvchad.configs.luasnip"
+        end,
+      },
     },
   },
 
