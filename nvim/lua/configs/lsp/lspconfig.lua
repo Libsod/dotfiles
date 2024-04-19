@@ -25,6 +25,7 @@ local servers = {
   "yamlls",
   "jdtls",
   "rust_analyzer",
+  "ols",
 }
 
 -- lsps with default config
