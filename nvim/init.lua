@@ -37,7 +37,7 @@ require "autocmds"
 
 local function neovide_config()
   vim.o.guifont = "Iosevka Nerd Font:h20"
-  vim.opt.linespace = 14
+  vim.opt.linespace = 13
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_refresh_rate = 120
