@@ -26,14 +26,14 @@ shift + alt - n : yabai -m window --space next;
 shift + alt - m : yabai -m window --toggle zoom-fullscreen
 shift + alt - u : yabai -m window --toggle zoom-parent
 
-# resize wezterm
-ctrl + alt - t : yabai -m window --toggle float && yabai -m space --layout float && yabai -m window --resize abs:1744:1097
+# resize alacritty
+ctrl + alt - t : yabai -m window --toggle float && yabai -m space --layout float && yabai -m window --resize abs:1740:1076
 
 # resize neovide
 ctrl + alt - n : yabai -m window --toggle float && yabai -m space --layout float && yabai -m window --resize abs:1750:1088
 
 # neovide automation
-ctrl + alt - g: yabai -m window $(yabai -m query --windows | jq ".[] | select(.app == \"Neovide\")" | jq ".id") --focus && yabai -m window $(yabai -m query --windows | jq ".[] | select(.app == \"Neovide\")" | jq ".id") --space 4 --focus && yabai -m space --layout float && yabai -m window mouse --focus && yabai -m window mouse --resize abs:1750:1088 && yabai -m window $(yabai -m query --windows | jq ".[] | select(.app == \"WezTerm\")" | jq ".id") --resize abs:1744:1097
+ctrl + alt - g: yabai -m window $(yabai -m query --windows | jq ".[] | select(.app == \"Neovide\")" | jq ".id") --focus && yabai -m window $(yabai -m query --windows | jq ".[] | select(.app == \"Neovide\")" | jq ".id") --space 4 --focus && yabai -m space --layout float && yabai -m window mouse --focus && yabai -m window mouse --resize abs:1750:1088 && yabai -m window $(yabai -m query --windows | jq ".[] | select(.app == \"Alacritty\")" | jq ".id") --resize abs:1740:1076
 
 
 # ------------------Space layouts------------------

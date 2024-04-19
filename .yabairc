@@ -39,8 +39,8 @@ yabai -m rule --add app="^System Preferences" manage=off
 # firefox auto actions
 yabai -m signal --add event=application_launched action="yabai -m window --focus $(yabai -m query --windows | jq \".[] | select(.app == \"Firefox\")\" | jq \".id\") && yabai -m window --space 1 --focus && yabai -m space --layout stack" app="^Firefox"
 
-# wezterm auto actions
-yabai -m signal --add event=application_launched action="yabai -m window --focus $(yabai -m query --windows | jq \".[] | select(.app == \"WezTerm\")\" | jq \".id\") && yabai -m window --space 2 --focus && yabai -m space --layout float" app="^WezTerm"
+# alacritty auto actions
+yabai -m signal --add event=application_launched action="yabai -m window --focus $(yabai -m query --windows | jq \".[] | select(.app == \"Alacritty\")\" | jq \".id\") && yabai -m window --space 2 --focus && yabai -m space --layout float" app="^Alacritty"
 
 # telegram auto actions
 yabai -m signal --add event=application_launched action="yabai -m window --focus $(yabai -m query --windows | jq \".[] | select(.app == \"Telegram\")\" | jq \".id\") && yabai -m window --space 3 --focus && yabai -m space --layout stack" app="^Telegram"
