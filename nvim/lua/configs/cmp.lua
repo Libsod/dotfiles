@@ -18,15 +18,14 @@ compare.lsp_scores = function(entry1, entry2)
 end
 
 local formatting_style = {
-  fields = { "kind", "menu", "abbr" },
+  fields = { "abbr", "kind" },
 
   format = function(_, item)
     local icons = require "nvchad.icons.lspkind"
     local icon = (cmp_ui.icons and icons[item.kind]) or ""
 
-    icon = " " .. icon .. " "
-    item.menu = cmp_ui.lspkind_text and "" .. item.kind .. "" or ""
-    item.kind = icon
+    icon = " " .. icon .. "  "
+    item.kind = (icon .. item.kind) or ""
 
     return item
   end,
@@ -91,7 +90,6 @@ local options = {
 
   performance = {
     async_budget = 1,
-    max_view_entries = 120,
   },
 
   mapping = {
