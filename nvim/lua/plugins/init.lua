@@ -139,6 +139,7 @@ return {
 
   {
     "karb94/neoscroll.nvim",
+    enabled = false,
     keys = { "<C-d>", "<C-u>" },
 
     config = function()

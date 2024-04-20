@@ -9,7 +9,7 @@ local options = {
     "zz",
     "zb",
   },
-  hide_cursor = false, -- Hide cursor while scrolling
+  hide_cursor = true, -- Hide cursor while scrolling
   stop_eof = true, -- Stop at <EOF> when scrolling downwards
   use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
   respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
@@ -17,7 +17,7 @@ local options = {
   easing_function = nil, -- Default easing function
   pre_hook = nil, -- Function to run before the scrolling animation starts
   post_hook = nil, -- Function to run after the scrolling animation ends
-  performance_mode = false,
+  performance_mode = true,
 }
 
 require("neoscroll").setup(options)
