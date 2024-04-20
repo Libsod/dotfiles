@@ -42,7 +42,7 @@ local function neovide_config()
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_refresh_rate = 120
   vim.g.neovide_no_idle = false
-  vim.g.neovide_refresh_rate_idle = 25
+  vim.g.neovide_refresh_rate_idle = 30
   vim.g.neovide_profiler = false
   vim.g.neovide_input_macos_alt_is_meta = false
   vim.g.neovide_cursor_antialiasing = true
@@ -59,7 +59,17 @@ local function neovide_config()
   vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
 end
 
+local function clipboard_config()
+  vim.g.clipboard = {
+    name = "macOS-clipboard",
+    copy = { ["+"] = "pbcopy", ["*"] = "pbcopy" },
+    paste = { ["+"] = "pbpaste", ["*"] = "pbpaste" },
+    cache_enabled = 0,
+  }
+end
+
 neovide_config()
+clipboard_config()
 
 vim.schedule(function()
   require "mappings"
