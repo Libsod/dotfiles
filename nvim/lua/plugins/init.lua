@@ -14,15 +14,7 @@ return {
       require("configs.lspconfig").defaults()
       require "configs.lsp.lspconfig"
     end,
-    dependencies = {
-      {
-        "ray-x/lsp_signature.nvim",
-        config = function()
-          local opts = require("configs.lsp-signature").cfg
-          require("lsp_signature").setup(opts)
-        end,
-      },
-    },
+    dependencies = {},
   },
 
   {
@@ -36,8 +28,8 @@ return {
   {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble", "TroubleRefresh" },
-    config = function()
-      require "configs.trouble"
+    opts = function()
+      return require "configs.trouble"
     end,
   },
 
@@ -50,17 +42,19 @@ return {
       require("cmp").setup(opts)
     end,
     dependencies = {
-      "lukas-reineke/cmp-under-comparator",
       {
         "L3MON4D3/LuaSnip",
+        event = { "LspAttach" },
         build = "make install_jsregexp",
-        dependencies = "rafamadriz/friendly-snippets",
         opts = { history = true, updateevents = "TextChanged,TextChangedI" },
         config = function(_, opts)
           require("luasnip").config.set_config(opts)
           require "nvchad.configs.luasnip"
         end,
+        dependencies = "rafamadriz/friendly-snippets",
       },
+
+      "lukas-reineke/cmp-under-comparator",
     },
   },
 
@@ -75,8 +69,9 @@ return {
 
       local hooks = require "ibl.hooks"
       hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
-
       require("ibl").setup(opts)
+
+      dofile(vim.g.base46_cache .. "blankline")
     end,
   },
 
@@ -103,25 +98,18 @@ return {
       dofile(vim.g.base46_cache .. "treesitter")
       require("nvim-treesitter.configs").setup(opts)
     end,
-    dependencies = {
-      {
-        "windwp/nvim-ts-autotag",
-        config = function()
-          require "configs.ts-autotag"
-        end,
-      },
-    },
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    ft = { "html", "xml", "tsx", "astro", "markdown" },
+    config = function()
+      require "configs.ts-autotag"
+    end,
   },
 
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-ui-select.nvim",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-      },
-    },
     cmd = "Telescope",
     opts = function()
       return require "configs.telescope"
@@ -135,11 +123,17 @@ return {
         telescope.load_extension(ext)
       end
     end,
+    dependencies = {
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+      },
+      "nvim-telescope/telescope-ui-select.nvim",
+    },
   },
 
   {
     "karb94/neoscroll.nvim",
-    enabled = false,
     keys = { "<C-d>", "<C-u>" },
 
     config = function()
@@ -172,7 +166,8 @@ return {
 
   {
     "NvChad/nvim-colorizer.lua",
-    event = { "BufWritePre" },
+    keys = { "<leader>pp" },
+    ft = { "css", "ts", "tsx" },
     config = function(_, opts)
       require("colorizer").setup(opts)
     end,
@@ -224,14 +219,6 @@ return {
   },
 
   {
-    "zbirenbaum/neodim",
-    event = "LspAttach",
-    config = function()
-      require "configs.neodim"
-    end,
-  },
-
-  {
     "LunarVim/bigfile.nvim",
     lazy = false,
     config = function()
@@ -252,7 +239,7 @@ return {
 
   {
     "folke/paint.nvim",
-    event = { "CursorHold", "CursorHoldI" },
+    ft = { "lua" },
     config = function()
       require "configs.paint"
     end,
@@ -297,6 +284,14 @@ return {
     event = "InsertCharPre",
     config = function()
       require "configs.tabout"
+    end,
+  },
+
+  {
+    "ray-x/lsp_signature.nvim",
+    event = { "LspAttach" },
+    opts = function()
+      return require("configs.lsp-signature").cfg
     end,
   },
 }
