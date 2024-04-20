@@ -25,7 +25,7 @@ local formatting_style = {
     local icon = (cmp_ui.icons and icons[item.kind]) or ""
 
     icon = " " .. icon .. " "
-    item.menu = cmp_ui.lspkind_text and " (" .. item.kind .. ")" or ""
+    item.menu = cmp_ui.lspkind_text and "" .. item.kind .. "" or ""
     item.kind = icon
 
     return item
@@ -84,6 +84,15 @@ local options = {
   },
 
   formatting = formatting_style,
+
+  matching = {
+    disallow_partial_fuzzy_matching = false,
+  },
+
+  performance = {
+    async_budget = 1,
+    max_view_entries = 120,
+  },
 
   mapping = {
     ["<CR>"] = cmp.mapping.confirm {
