@@ -83,10 +83,18 @@ map("n", "<leader>fss", ":Autosession search<CR>", { silent = true, noremap = tr
 map("n", "<leader>fsd", ":Autosession delete<CR>", { silent = true, noremap = true, desc = "Auto-session delete" })
 
 -- Substitute
-map("n", "s", require("substitute").operator, { noremap = true })
-map("n", "ss", require("substitute").line, { noremap = true })
-map("n", "S", require("substitute").eol, { noremap = true })
-map("x", "s", require("substitute").visual, { noremap = true })
+map("n", "s", function()
+  require("substitute").operator()
+end, { silent = true, noremap = true })
+map("n", "ss", function()
+  require("substitute").line()
+end, { silent = true, noremap = true })
+map("n", "S", function()
+  require("substitute").eol()
+end, { silent = true, noremap = true })
+map("x", "s", function()
+  require("substitute").visual()
+end, { silent = true, noremap = true })
 
 -- Spectre
 map("n", "<leader>S", ':lua require("spectre").toggle()<CR>', { silent = true, desc = "Toggle Spectre" })
