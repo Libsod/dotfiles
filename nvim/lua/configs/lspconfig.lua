@@ -1,10 +1,6 @@
 local M = {}
 local map = vim.keymap.set
 
--- Lsp-signature
-local signature = require "lsp_signature"
-local signature_setup = require("configs.lsp-signature").options
-
 local excluded_servers = {
   "clangd",
   "tsserver",
@@ -40,6 +36,8 @@ M.on_attach = function(client, bufnr)
   map("n", "gi", ":Glance implementations<CR>", { silent = true, noremap = true, desc = "Lsp Go to implementation" })
 
   -- Lsp-signature
+  local signature = require "lsp_signature"
+  local signature_setup = require("configs.lsp-signature").options
   signature.on_attach(signature_setup, bufnr)
 
   map("n", "<leader>wl", function()
