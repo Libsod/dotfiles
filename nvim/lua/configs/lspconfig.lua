@@ -37,7 +37,7 @@ M.on_attach = function(client, bufnr)
 
   -- Lsp-signature
   local signature = require "lsp_signature"
-  local signature_setup = require("configs.lsp-signature").options
+  local signature_setup = require("configs.lsp-signature").cfg
   signature.on_attach(signature_setup, bufnr)
 
   map("n", "<leader>wl", function()

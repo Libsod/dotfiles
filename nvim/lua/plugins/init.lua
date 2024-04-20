@@ -290,8 +290,5 @@ return {
   {
     "ray-x/lsp_signature.nvim",
     event = { "LspAttach" },
-    opts = function()
-      return require("configs.lsp-signature").cfg
-    end,
   },
 }
