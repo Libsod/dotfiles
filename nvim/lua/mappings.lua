@@ -125,3 +125,6 @@ map(
 
 -- Noice
 map("n", "<leader>nn", ":NoiceDismiss<CR>", { silent = true, noremap = true })
+
+-- Tabout
+map("i", "<C-f>", "<Tab>", { silent = true, noremap = true })
