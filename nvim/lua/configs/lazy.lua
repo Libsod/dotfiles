@@ -1,6 +1,7 @@
 return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
+  concurrency = 20,
 
   ui = {
     wrap = true, -- wrap the lines in the ui
@@ -45,8 +46,11 @@ return {
         "zip",
         "zipPlugin",
         "tutor",
+        "sql_completion",
+        "remote_plugins",
         "rplugin",
         "syntax",
+        "syntax_completion",
         "synmenu",
         "optwin",
         "compiler",
