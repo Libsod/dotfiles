@@ -168,9 +168,6 @@ return {
     "NvChad/nvim-colorizer.lua",
     keys = { "<leader>pp" },
     ft = { "css", "ts", "tsx" },
-    config = function(_, opts)
-      require("colorizer").setup(opts)
-    end,
   },
 
   {

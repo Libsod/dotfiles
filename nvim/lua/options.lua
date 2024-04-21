@@ -33,5 +33,11 @@ g.netrw_liststyle = 3
 
 o.cursorlineopt = "both"
 
+vim.cmd.syntax "manual"
+
+if vim.fn.has "nvim-0.10" == 1 then
+  vim.opt.smoothscroll = true
+end
+
 -- For auto-session plugin
 o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
