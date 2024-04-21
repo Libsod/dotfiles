@@ -1,11 +1,6 @@
 local M = {}
 local map = vim.keymap.set
 
-local excluded_servers = {
-  "clangd",
-  "tsserver",
-}
-
 local def_on_init = function(client, _)
   if client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
@@ -50,9 +45,9 @@ M.on_attach = function(client, bufnr)
 
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Lsp Code action")
 
-  if client.supports_method "textDocument/inlayHint" and not vim.tbl_contains(excluded_servers, client.name) then
-    vim.lsp.inlay_hint.enable(bufnr, true)
-  end
+  -- if client.supports_method "textDocument/inlayHint" and not vim.tbl_contains(excluded_servers, client.name) then
+  --   vim.lsp.inlay_hint.enable(bufnr, true)
+  -- end
 
   vim.api.nvim_create_autocmd("CursorHold", {
     buffer = bufnr,
