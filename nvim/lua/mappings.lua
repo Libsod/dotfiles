@@ -7,9 +7,13 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 -- More convenient escape
 map("i", "jk", "<ESC>")
 
--- Dealing with word wrap
-map("n", "k", "v:count == 0 ? 'gk' : 'k'", { silent = true, expr = true })
-map("n", "j", "v:count == 0 ? 'gj' : 'j'", { silent = true, expr = true })
+-- Allow moving the cursor through wrapped lines with <Up> and <Down>
+map({ "n", "v", "x" }, "<Down>", "v:count == 1 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "v", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
+-- Move lines up/down
+map("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
+map("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
 
 -- Spider
 map({ "n", "o", "x" }, "w", function()
