@@ -24,8 +24,9 @@ local formatting_style = {
     local icons = require "nvchad.icons.lspkind"
     local icon = (cmp_ui.icons and icons[item.kind]) or ""
 
-    icon = " " .. icon .. "  "
+    icon = "" .. icon .. "  "
     item.kind = (icon .. item.kind) or ""
+    item.menu = ""
 
     return item
   end,
