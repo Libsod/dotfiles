@@ -289,7 +289,7 @@ return {
 
   {
     "NvChad/nvim-colorizer.lua",
-    keys = { "<leader>pp" },
+    keys = { "<leader>pc" },
     ft = { "css", "ts", "tsx" },
     opts = { user_default_options = { names = false } },
     config = function(_, opts)

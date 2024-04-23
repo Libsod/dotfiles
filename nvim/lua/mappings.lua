@@ -125,7 +125,7 @@ map("n", "<leader>q", ":TroubleToggle<CR>", { silent = true, noremap = true })
 -- TodoTrouble
 map("n", "<leader>t", ":TodoTrouble<CR>", { silent = true, noremap = true })
 
--- Todojumping
+-- Todo-jumping
 map("n", "]t", function()
   require("todo-comments").jump_next()
 end, { silent = true, noremap = true, desc = "Next todo comment" })
@@ -147,6 +147,7 @@ map(
 map("n", "<leader>ft", ":TodoTelescope<CR>", { silent = true, noremap = true })
 map("n", "<leader>fg", ":Telescope grep_string<CR>", { silent = true, noremap = true })
 map("n", "<leader>fr", ":Telescope treesitter<CR>", { silent = true, noremap = true })
+map("n", "<leader>fd", ":Telescope lsp_document_symbols<CR>", { silent = true, noremap = true })
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "Telescope Live grep" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Telescope Find buffers" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Telescope Help page" })
@@ -156,14 +157,8 @@ map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = 
 map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "Telescope Git commits" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Telescope Git status" })
 map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "Telescope Pick hidden term" })
-map("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "Telescope Nvchad themes" })
+map("n", "<leader>fc", "<cmd>Telescope themes<CR>", { desc = "Telescope Nvchad themes" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Telescope Find files" })
-map(
-  "n",
-  "<leader>fa",
-  "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-  { desc = "Telescope Find all files" }
-)
 
 -- Oil
 map("n", "<leader>o", ":Oil --float<CR>", { silent = true, noremap = true })
@@ -182,8 +177,7 @@ map(
 -- Auto-session
 map("n", "<leader>sr", ":SessionRestore<CR>", { silent = true, noremap = true, desc = "Session restore" })
 map("n", "<leader>ss", ":SessionSave<CR>", { silent = true, noremap = true, desc = "Session save" })
-map("n", "<leader>fss", ":Autosession search<CR>", { silent = true, noremap = true, desc = "Auto-session search" })
-map("n", "<leader>fsd", ":Autosession delete<CR>", { silent = true, noremap = true, desc = "Auto-session delete" })
+map("n", "<leader>fss", ":Telescope session-lens<CR>", { silent = true, noremap = true, desc = "Session search" })
 
 -- Substitute
 map("n", "s", function()
