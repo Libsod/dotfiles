@@ -32,25 +32,6 @@ local formatting_style = {
   end,
 }
 
-comparators = {
-  compare.offset, -- Items closer to cursor will have lower priority
-  compare.exact,
-  compare.scopes,
-  compare.lsp_scores,
-  compare.recently_used,
-  compare.sort_text,
-  compare.score,
-  function()
-    if filetype == "cpp" or "c" or "h" or "hpp" then
-      require "clangd_extensions.cmp_scores"
-    end
-  end,
-  require("cmp-under-comparator").under,
-  compare.kind,
-  compare.length,
-  compare.order,
-}
-
 local options = {
   completion = {
     completeopt = "menu,menuone",
@@ -129,7 +110,24 @@ local options = {
     }),
   },
 
-  comparators = {},
+  comparators = {
+    compare.offset, -- Items closer to cursor will have lower priority
+    compare.exact,
+    compare.scopes,
+    compare.lsp_scores,
+    compare.recently_used,
+    compare.sort_text,
+    compare.score,
+    function()
+      if filetype == "cpp" or "c" or "h" or "hpp" then
+        require "clangd_extensions.cmp_scores"
+      end
+    end,
+    require("cmp-under-comparator").under,
+    compare.kind,
+    compare.length,
+    compare.order,
+  },
 
   sources = {
     {
@@ -151,14 +149,11 @@ local options = {
     { name = "nvim_lua" },
     { name = "path" },
     { name = "buffer" },
-    { name = "spell" },
-    { name = "crates" },
+    -- { name = "crates" },
     { name = "treesitter" },
-    { name = "orgmode" },
+    -- { name = "orgmode" },
     { name = "nvim_lsp_signature_help" },
-    { name = "git" },
-    { name = "tmux" },
-    { name = "latex_symbols" },
+    -- { name = "latex_symbols" },
   },
 }
 
