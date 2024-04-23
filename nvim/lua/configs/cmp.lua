@@ -114,14 +114,14 @@ local options = {
     compare.scopes,
     compare.lsp_scores,
     compare.recently_used,
-    compare.sort_text,
     compare.score,
+    require("cmp-under-comparator").under,
     function()
       if filetype == "cpp" or "c" or "h" or "hpp" then
         require "clangd_extensions.cmp_scores"
       end
     end,
-    require("cmp-under-comparator").under,
+    compare.sort_text,
     compare.kind,
     compare.length,
     compare.order,
