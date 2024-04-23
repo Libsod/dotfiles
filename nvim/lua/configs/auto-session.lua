@@ -5,8 +5,7 @@ local options = {
 
   session_lens = {
     load_on_setup = true,
-    theme_conf = { border = "rounded" },
-    previewer = true,
+    theme_conf = { border = true },
   },
 }
 
