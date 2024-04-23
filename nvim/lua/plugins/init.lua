@@ -387,7 +387,7 @@ return {
 
   {
     "rmagatti/auto-session",
-    cmd = { "SessionSave", "SessionRestore", "Autosession" },
+    cmd = { "SessionSave", "SessionRestore" },
     config = function()
       require "configs.auto-session"
     end,

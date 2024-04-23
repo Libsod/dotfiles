@@ -177,7 +177,12 @@ map(
 -- Auto-session
 map("n", "<leader>sr", ":SessionRestore<CR>", { silent = true, noremap = true, desc = "Session restore" })
 map("n", "<leader>ss", ":SessionSave<CR>", { silent = true, noremap = true, desc = "Session save" })
-map("n", "<leader>fss", ":Telescope session-lens<CR>", { silent = true, noremap = true, desc = "Session search" })
+map(
+  "n",
+  "<leader>fss",
+  ":lua require('auto-session.session-lens').search_session()<CR>",
+  { silent = true, noremap = true, desc = "Session search" }
+)
 
 -- Substitute
 map("n", "s", function()
