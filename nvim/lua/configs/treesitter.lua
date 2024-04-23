@@ -48,6 +48,9 @@ local options = {
     -- Nix
     "nix",
 
+    -- Nim
+    "nim",
+
     -- Norg
     "norg",
 
