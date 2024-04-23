@@ -98,12 +98,21 @@ map("n", "<leader>wk", function()
 end, { desc = "Whichkey query lookup" })
 
 -- Spider
-map({ "n", "o", "x" }, "w", ":lua require('spider').motion 'w'", { silent = true, noremap = true })
-map({ "n", "o", "x" }, "e", ":lua require('spider').motion 'e'", { silent = true, noremap = true })
-map({ "n", "o", "x" }, "b", ":lua require('spider').motion 'b'", { silent = true, noremap = true })
-map({ "n", "o", "x" }, "ge", ":lua require('spider').motion 'ge'", { silent = true, noremap = true })
-map("n", "cw", "c<CMD>lua require('spider').motion('e')<CR>")
-map("n", "cb", "c<CMD>lua require('spider').motion('b')<CR>")
+map({ "n", "o", "x" }, "w", function()
+  require("spider").motion "w"
+end, { silent = true, noremap = true })
+map({ "n", "o", "x" }, "e", function()
+  require("spider").motion "e"
+end, { silent = true, noremap = true })
+map({ "n", "o", "x" }, "b", function()
+  require("spider").motion "b"
+end, { silent = true, noremap = true })
+map({ "n", "o", "x" }, "ge", function()
+  require("spider").motion "ge"
+end, { silent = true, noremap = true })
+
+map("n", "cw", "c<CMD>lua require('spider').motion('w')<CR>")
+map("n", "ce", "c<CMD>lua require('spider').motion('e')<CR>")
 
 -- Hop
 map("n", "gw", ":HopWordMW<CR>", { silent = true, noremap = true })
@@ -177,10 +186,15 @@ map(
 )
 
 -- Substitute
-map("n", "s", ":lua require('substitute').operator()", { silent = true, noremap = true })
-map("n", "s", ":lua require('substitute').line()", { silent = true, noremap = true })
-map("n", "s", ":lua require('substitute').eol()", { silent = true, noremap = true })
-map("x", "s", ":lua require('substitute').visual()", { silent = true, noremap = true })
+map("n", "sl", function()
+  require("substitute").line()
+end, { silent = true, noremap = true })
+map("n", "S", function()
+  require("substitute").eol()
+end, { silent = true, noremap = true })
+map("x", "s", function()
+  require("substitute").visual()
+end, { silent = true, noremap = true })
 
 -- Spectre
 map("n", "<leader>S", ':lua require("spectre").toggle()<CR>', { silent = true, desc = "Toggle Spectre" })
