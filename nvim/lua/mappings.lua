@@ -100,19 +100,17 @@ end, { desc = "Whichkey query lookup" })
 -- Spider
 map({ "n", "o", "x" }, "w", function()
   require("spider").motion "w"
-end, { silent = true, noremap = true })
+end, { noremap = true })
 map({ "n", "o", "x" }, "e", function()
   require("spider").motion "e"
-end, { silent = true, noremap = true })
+end, { noremap = true })
 map({ "n", "o", "x" }, "b", function()
   require("spider").motion "b"
-end, { silent = true, noremap = true })
+end, { noremap = true })
 map({ "n", "o", "x" }, "ge", function()
   require("spider").motion "ge"
-end, { silent = true, noremap = true })
-
-map("n", "cw", "c<CMD>lua require('spider').motion('w')<CR>")
-map("n", "ce", "c<CMD>lua require('spider').motion('e')<CR>")
+end, { noremap = true })
+map("n", "cw", "c<CMD>lua require('spider').motion('e')<CR>")
 
 -- Hop
 map("n", "gw", ":HopWordMW<CR>", { silent = true, noremap = true })
@@ -186,15 +184,18 @@ map(
 )
 
 -- Substitute
-map("n", "sl", function()
+map("n", "s", function()
+  require("substitute").operator()
+end, { noremap = true })
+map("n", "ss", function()
   require("substitute").line()
-end, { silent = true, noremap = true })
+end, { noremap = true })
 map("n", "S", function()
   require("substitute").eol()
-end, { silent = true, noremap = true })
+end, { noremap = true })
 map("x", "s", function()
   require("substitute").visual()
-end, { silent = true, noremap = true })
+end, { noremap = true })
 
 -- Spectre
 map("n", "<leader>S", ':lua require("spectre").toggle()<CR>', { silent = true, desc = "Toggle Spectre" })
