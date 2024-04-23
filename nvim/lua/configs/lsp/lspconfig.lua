@@ -26,6 +26,7 @@ local servers = {
   "jdtls",
   "rust_analyzer",
   "ols",
+  "gleam",
 }
 
 -- lsps with default config

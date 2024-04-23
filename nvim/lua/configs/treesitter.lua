@@ -51,6 +51,9 @@ local options = {
     -- Nim
     "nim",
 
+    -- Gleam
+    "gleam",
+
     -- Norg
     "norg",
 
