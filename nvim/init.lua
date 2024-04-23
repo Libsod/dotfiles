@@ -1,7 +1,7 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 vim.g.mapleader = " "
 
--- bootstrap lazy and all plugins
+-- Bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -13,27 +13,23 @@ vim.opt.rtp:prepend(lazypath)
 
 local lazy_config = require "configs.lazy"
 
--- load plugins
+-- Load plugins
 require("lazy").setup({
   {
     "NvChad/NvChad",
     lazy = false,
     branch = "v2.5",
-    import = "nvchad.plugins",
-    config = function()
-      require "options"
-    end,
   },
 
   { import = "plugins" },
 }, lazy_config)
 
--- load theme
+-- Load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
-require "nvchad.autocmds"
 require "autocmds"
+require "options"
 
 local function neovide_config()
   vim.o.guifont = "Iosevka Nerd Font:h20"

@@ -1,6 +1,5 @@
 local conform = require "conform"
 
---type conform.options
 local options = {
   format_on_save = {
     lsp_fallback = true,
@@ -16,7 +15,6 @@ local options = {
     html = { "prettier" },
     cpp = { "clang_format" },
     c = { "clang_format" },
-    sh = { "shfmt" },
     yaml = { "prettier" },
     json = { "prettier" },
   },

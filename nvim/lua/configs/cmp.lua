@@ -2,8 +2,6 @@ local cmp = require "cmp"
 
 dofile(vim.g.base46_cache .. "cmp")
 
-local cmp_ui = require("nvconfig").ui.cmp
-
 local filetype = vim.fn.expand "%:e"
 
 local compare = require "cmp.config.compare"
@@ -22,7 +20,7 @@ local formatting_style = {
 
   format = function(_, item)
     local icons = require "nvchad.icons.lspkind"
-    local icon = (cmp_ui.icons and icons[item.kind]) or ""
+    local icon = icons[item.kind]
 
     icon = "" .. icon .. "  "
     item.kind = (icon .. item.kind) or ""

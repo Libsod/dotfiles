@@ -1,15 +1,71 @@
 return {
+
+  {
+    "nvim-lua/plenary.nvim",
+  },
+
+  -- NVChad
+  {
+    "NvChad/base46",
+    branch = "v2.5",
+    build = function()
+      require("base46").load_all_highlights()
+    end,
+  },
+
+  {
+    "NvChad/ui",
+    branch = "v2.5",
+    lazy = false,
+    config = function()
+      require "nvchad"
+    end,
+  },
+
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = function()
+      return { override = require "nvchad.icons.devicons" }
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "devicons")
+      require("nvim-web-devicons").setup(opts)
+    end,
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    opts = function()
+      return require "nvchad.configs.nvimtree"
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "nvimtree")
+      require("nvim-tree").setup(opts)
+    end,
+  },
+
+  {
+    "folke/which-key.nvim",
+    keys = { "<leader>", "<c-w>", "g" },
+    cmd = "WhichKey",
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "whichkey")
+      require("which-key").setup(opts)
+    end,
+  },
+
   {
     "stevearc/conform.nvim",
-    event = "BufWritePre", -- uncomment for format on save
+    event = "BufWritePre",
     config = function()
       require "configs.conform"
     end,
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
+    event = "User FilePost",
     config = function()
       require("configs.lspconfig").defaults()
       require "configs.lsp.lspconfig"
@@ -26,6 +82,18 @@ return {
   },
 
   {
+    "lewis6991/gitsigns.nvim",
+    event = "User FilePost",
+    opts = function()
+      return require "configs.gitsigns"
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "git")
+      require("gitsigns").setup(opts)
+    end,
+  },
+
+  {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble", "TroubleRefresh" },
     opts = function()
@@ -35,6 +103,7 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     opts = function()
       return require "configs.cmp"
     end,
@@ -54,8 +123,48 @@ return {
         dependencies = "rafamadriz/friendly-snippets",
       },
 
-      "lukas-reineke/cmp-under-comparator",
+      {
+        "windwp/nvim-autopairs",
+        opts = {
+          fast_wrap = {},
+          disable_filetype = { "TelescopePrompt", "vim" },
+        },
+        config = function(_, opts)
+          require("nvim-autopairs").setup(opts)
+
+          local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+          require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+        end,
+      },
+
+      {
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "lukas-reineke/cmp-under-comparator",
+      },
     },
+  },
+
+  {
+    "hrsh7th/cmp-nvim-lua",
+    ft = { "Lua" },
+  },
+
+  {
+    "numToStr/Comment.nvim",
+    keys = {
+      { "gcc", mode = "n", desc = "Comment toggle current line" },
+      { "gc", mode = { "n", "o" }, desc = "Comment toggle linewise" },
+      { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
+      { "gbc", mode = "n", desc = "Comment toggle current block" },
+      { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+      { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
+    },
+    config = function(_, opts)
+      require("Comment").setup(opts)
+    end,
   },
 
   {
@@ -77,19 +186,29 @@ return {
 
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
-        "css-lsp",
-        "prettier",
-      },
-    },
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
+    opts = function()
+      return require "configs.mason"
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "mason")
+      require("mason").setup(opts)
+
+      vim.api.nvim_create_user_command("MasonInstallAll", function()
+        if opts.ensure_installed and #opts.ensure_installed > 0 then
+          vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
+        end
+      end, {})
+
+      vim.g.mason_binaries_list = opts.ensure_installed
+    end,
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    build = ":TSUpdate",
     opts = function()
       return require "configs.treesitter"
     end,
@@ -125,10 +244,14 @@ return {
     end,
     dependencies = {
       {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-telescope/telescope-ui-select.nvim",
+      },
+
+      {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
       },
-      "nvim-telescope/telescope-ui-select.nvim",
     },
   },
 
@@ -168,6 +291,15 @@ return {
     "NvChad/nvim-colorizer.lua",
     keys = { "<leader>pp" },
     ft = { "css", "ts", "tsx" },
+    opts = { user_default_options = { names = false } },
+    config = function(_, opts)
+      require("colorizer").setup(opts)
+
+      -- execute colorizer as soon as possible
+      vim.defer_fn(function()
+        require("colorizer").attach_to_buffer(0)
+      end, 0)
+    end,
   },
 
   {
@@ -208,7 +340,6 @@ return {
     branch = "nightly",
     cmd = "Neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
       "ibhagwan/fzf-lua", -- optional
     },
@@ -226,7 +357,6 @@ return {
   {
     "folke/todo-comments.nvim",
     event = { "BufReadPost" },
-    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       highlight = {
         comments_only = false, -- uses treesitter to match keywords in comments only

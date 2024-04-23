@@ -1,4 +1,3 @@
-require "nvchad.options"
 local opt = vim.opt
 local g = vim.g
 local o = vim.o
@@ -23,15 +22,34 @@ opt.backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.
 opt.swapfile = false
 opt.showcmd = false
 opt.showmode = false
+opt.fillchars = { eob = " " }
+opt.shortmess:append "sI"
+opt.whichwrap:append "<>[]hl"
+
+o.cursorlineopt = "both"
+o.laststatus = 3
+o.clipboard = "unnamedplus"
+o.cursorline = true
+o.expandtab = true
+o.shiftwidth = 2
+o.smartindent = true
+o.tabstop = 2
+o.softtabstop = 2
+o.ignorecase = true
+o.smartcase = true
+o.mouse = "a"
+o.number = true
+o.numberwidth = 2
+o.ruler = false
+o.signcolumn = "yes"
+o.splitbelow = true
+o.splitright = true
+o.undofile = true
 
 g.did_install_default_menus = 1
 g.did_install_syntax_menu = 1
 g.did_load_filetypes = 1
-
--- newtrw liststyle: https://medium.com/usevim/the-netrw-style-options-3ebe91d42456
 g.netrw_liststyle = 3
-
-o.cursorlineopt = "both"
 
 vim.cmd.syntax "manual"
 
@@ -41,3 +59,12 @@ end
 
 -- For auto-session plugin
 o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+-- Disable some default providers
+g["loaded_node_provider"] = 0
+g["loaded_python3_provider"] = 0
+g["loaded_perl_provider"] = 0
+g["loaded_ruby_provider"] = 0
+
+-- Add binaries installed by mason.nvim to path
+vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. ":" .. vim.env.PATH

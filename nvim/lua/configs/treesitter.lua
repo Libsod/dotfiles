@@ -1,5 +1,77 @@
 local options = {
-  ensure_installed = { "lua", "vim", "vimdoc" },
+  ensure_installed = {
+    -- Shell
+    "bash",
+    "fish",
+
+    -- Low-level
+    "c",
+    "cpp",
+    "zig",
+    "odin",
+    "rust",
+    "nasm",
+
+    -- Web
+    "html",
+    "css",
+    "scss",
+    "javascript",
+    "typescript",
+    "tsx",
+    "astro",
+
+    -- Python
+    "python",
+
+    -- Lua
+    "lua",
+    "luadoc",
+
+    -- Markdown
+    "markdown",
+    "markdown_inline",
+
+    -- LaTeX
+    "latex",
+
+    -- Markup langs
+    "xml",
+    "json",
+    "yaml",
+    "toml",
+
+    -- Vim
+    "vim",
+    "vimdoc",
+
+    -- Nix
+    "nix",
+
+    -- Norg
+    "norg",
+
+    -- Docker
+    "dockerfile",
+
+    -- Sql
+    "sql",
+
+    -- Build system's langs
+    "make",
+    "cmake",
+
+    -- Git
+    "git_config",
+    "git_rebase",
+    "gitattributes",
+    "gitcommit",
+    "gitignore",
+
+    -- Misc
+    "query",
+    "regex",
+  },
 
   highlight = {
     enable = true,
