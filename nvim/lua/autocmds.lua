@@ -19,6 +19,88 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufRead", {
+  group = vim.api.nvim_create_augroup("CargoKeymaps", { clear = true }),
+  pattern = "Cargo.toml",
+  callback = function()
+    local map = vim.keymap.set
+    -- Crates
+    map("n", "<leader>ct", function()
+      require("crates").toggle()
+    end, { silent = true, noremap = true, desc = "[Crates] toggle ui elements" })
+    map("n", "<leader>cr", function()
+      require("crates").reload()
+    end, { silent = true, noremap = true, desc = "[Crates] reload data" })
+    map("n", "<leader>cv", function()
+      require("crates").show_popup()
+    end, { silent = true, noremap = true, desc = "[Crates] show popup w/ crate details" })
+    map("n", "<leader>cv", function()
+      require("crates").show_versions_popup()
+    end, { silent = true, noremap = true, desc = "[Crates] show popup (always show versions)" })
+    map("n", "<leader>cf", function()
+      require("crates").show_features_popup()
+    end, { silent = true, noremap = true, desc = "[Crates] show popup (always show features)" })
+    map("n", "<leader>cd", function()
+      require("crates").show_dependencies_popup()
+    end, { silent = true, noremap = true, desc = "[Crates] show popup (always show dependencies)" })
+    map("n", "<leader>cul", function()
+      require("crates").update_crate()
+    end, { silent = true, noremap = true, desc = "[Crates] update crate on currline" })
+    map("v", "<leader>cuv", function()
+      require("crates").update_crates()
+    end, { silent = true, noremap = true, desc = "[Crates] update visually selected crates" })
+    map("n", "<leader>cua", function()
+      require("crates").update_all_crates()
+    end, { silent = true, noremap = true, desc = "[Crates] update all crates in curr buffr" })
+    map("n", "<leader>cUl", function()
+      require("crates").update_crate()
+    end, { silent = true, noremap = true, desc = "[Crates] upgrade crate on currline" })
+    map("v", "<leader>cUv", function()
+      require("crates").update_crates()
+    end, { silent = true, noremap = true, desc = "[Crates] upgrade visually selected crates" })
+    map("n", "<leader>cUa", function()
+      require("crates").update_all_crates()
+    end, { silent = true, noremap = true, desc = "[Crates] upgrade all crates in curr buffr" })
+    map("n", "<leader>cx", function()
+      require("crates").expand_plain_crate_to_inline_table()
+    end, { silent = true, noremap = true, desc = "[Crates] expand crate declaration -> inline table" })
+    map("n", "<leader>cX", function()
+      require("crates").extract_crate_into_table()
+    end, {
+      silent = true,
+      noremap = true,
+      desc = "[Crates] extract crate declaration from dependency section -> table",
+    })
+    map("n", "<leader>cH", function()
+      require("crates").open_homepage()
+    end, { silent = true, noremap = true, desc = "[Crates] open homepage of the crate on currline" })
+    map("n", "<leader>cR", function()
+      require("crates").open_repository()
+    end, { silent = true, noremap = true, desc = "[Crates] open repo of the crate on currline" })
+    map("n", "<leader>cD", function()
+      require("crates").open_documentation()
+    end, { silent = true, noremap = true, desc = "[Crates] open documentation of the crate on currline" })
+    map("n", "<leader>cC", function()
+      require("crates").open_crates_io()
+    end, { silent = true, noremap = true, desc = "[Crates] open crates.io of the crate on currline" })
+
+    local function show_documentation()
+      local filetype = vim.bo.filetype
+      if vim.tbl_contains({ "vim", "help" }, filetype) then
+        vim.cmd("h " .. vim.fn.expand "<cword>")
+      elseif vim.tbl_contains({ "man" }, filetype) then
+        vim.cmd("Man " .. vim.fn.expand "<cword>")
+      elseif vim.fn.expand "%:t" == "Cargo.toml" and require("crates").popup_available() then
+        require("crates").show_popup()
+      else
+        vim.lsp.buf.hover()
+      end
+    end
+
+    map("n", "K", show_documentation, { silent = true })
+  end,
+})
+
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = vim.tbl_map(function(path)
     return vim.fs.normalize(vim.loop.fs_realpath(path))
