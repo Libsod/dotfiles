@@ -418,4 +418,22 @@ return {
     "ray-x/lsp_signature.nvim",
     event = { "LspAttach" },
   },
+
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^4", -- Recommended
+    ft = { "rust" },
+    config = function()
+      require "configs.rustaceanvim"
+    end,
+  },
+
+  {
+    "saecki/crates.nvim",
+    tag = "stable",
+    event = "BufReadPost Cargo.toml",
+    config = function()
+      require "configs.crates"
+    end,
+  },
 }

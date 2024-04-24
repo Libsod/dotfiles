@@ -39,7 +39,7 @@ M.on_attach = function(client, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts "Lsp List workspace folders")
 
-  map("n", "<leader>ra", function()
+  map("n", "<leader>lr", function()
     require "nvchad.lsp.renamer"()
   end, opts "Lsp NvRenamer")
 
@@ -96,6 +96,89 @@ M.clangd_on_init = function(client, _)
   def_on_init(client, _)
   require("clangd_extensions.inlay_hints").setup_autocmd()
   require("clangd_extensions.inlay_hints").set_inlay_hints()
+end
+
+M.rust_analyzer_on_init = function(client, _)
+  def_on_init(client, _)
+  map("n", "<leader>ra", ":RustLsp codeAction<CR>", { silent = true, noremap = true, desc = "[RustLsp] code action" })
+  map(
+    "n",
+    "<leader>rr",
+    ":RustLsp runnables<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] Run & select from all available targets" }
+  )
+  map(
+    "n",
+    "<leader>rn",
+    ":RustLsp run<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] Run target at the cursor position" }
+  )
+  map("n", "<leader>rm", ":RustLsp expandMacro<CR>", { silent = true, noremap = true, desc = "[RustLsp] expand macro" })
+  map(
+    "n",
+    "<leader>rb",
+    ":RustLsp rebuildProcMacros<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] rebuild proc macros" }
+  )
+  map("n", "<leader>rk", ":RustLsp moveItem up<CR>", { silent = true, noremap = true, desc = "[RustLsp] move item up" })
+  map(
+    "n",
+    "<leader>rj",
+    ":RustLsp moveItem down<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] move item down" }
+  )
+  map(
+    "n",
+    "<leader>rh",
+    ":RustLsp hover actions<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] hover actions" }
+  )
+  map(
+    "n",
+    "<leader>re",
+    ":RustLsp explainError<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] explain error" }
+  )
+  map(
+    "n",
+    "<leader>rd",
+    ":RustLsp renderdiagnostic<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] render diagnostic" }
+  )
+  map(
+    "n",
+    "<leader>rc",
+    ":RustLsp openCargo<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] open Cargo.toml" }
+  )
+  map(
+    "n",
+    "<leader>ro",
+    ":RustLsp openDocs<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] open docs.rs documentation" }
+  )
+  map(
+    "n",
+    "<leader>rp",
+    ":RustLsp parentModule<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] parent module" }
+  )
+  map(
+    { "n", "x" },
+    "<leader>rl",
+    ":RustLsp joinLines<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] join lines" }
+  )
+  map({ "n", "x" }, "<leader>rl", ":RustLsp ssr", { noremap = true, desc = "[RustLsp] structural search replace" })
+  map(
+    "n",
+    "<leader>rt",
+    ":RustLsp syntaxTree<CR>",
+    { silent = true, noremap = true, desc = "[RustLsp] view syntax tree" }
+  )
+  map("n", "<leader>rvh", ":RustLsp view hir<CR>", { silent = true, noremap = true, desc = "[RustLsp] view hir" })
+  map("n", "<leader>rvm", ":RustLsp view mir<CR>", { silent = true, noremap = true, desc = "[RustLsp] view mir" })
+  map("n", "<leader>ru", ":Rustc unpretty", { noremap = true, desc = "[RustLsp] rutsc unpretty" })
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()

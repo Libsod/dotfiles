@@ -24,7 +24,6 @@ local servers = {
   "jsonls",
   "yamlls",
   "jdtls",
-  "rust_analyzer",
   "ols",
   "gleam",
 }
