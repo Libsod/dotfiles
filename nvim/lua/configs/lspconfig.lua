@@ -105,13 +105,13 @@ M.rust_analyzer_on_init = function(client, _)
     "n",
     "<leader>rr",
     ":RustLsp runnables<CR>",
-    { silent = true, noremap = true, desc = "[RustLsp] Run & select from all available targets" }
+    { silent = true, noremap = true, desc = "[RustLsp] run & select from all available targets" }
   )
   map(
     "n",
     "<leader>rn",
     ":RustLsp run<CR>",
-    { silent = true, noremap = true, desc = "[RustLsp] Run target at the cursor position" }
+    { silent = true, noremap = true, desc = "[RustLsp] run target at the cursor position" }
   )
   map("n", "<leader>rm", ":RustLsp expandMacro<CR>", { silent = true, noremap = true, desc = "[RustLsp] expand macro" })
   map(

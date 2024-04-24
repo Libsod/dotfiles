@@ -115,8 +115,8 @@ map("n", "cw", "c<CMD>lua require('spider').motion('e')<CR>")
 -- Hop
 map("n", "gw", ":HopWordMW<CR>", { silent = true, noremap = true })
 map("n", "<leader>k", ":HopLineMW<CR>", { silent = true, noremap = true })
-map("n", "<leader>c", ":HopChar1MW<CR>", { silent = true, noremap = true })
-map("n", "<leader>cc", ":HopChar2MW<CR>", { silent = true, noremap = true })
+map("n", "gc", ":HopChar1MW<CR>", { silent = true, noremap = true })
+map("n", "<leader>g2c", ":HopChar2MW<CR>", { silent = true, noremap = true })
 
 -- Trouble
 map("n", "<leader>q", ":TroubleToggle<CR>", { silent = true, noremap = true })
@@ -153,7 +153,7 @@ map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Telescope Help 
 map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "Telescope Find marks" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope Find oldfiles" })
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope Find in current buffer" })
-map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "Telescope Git commits" })
+map("n", "<leader>gm", "<cmd>Telescope git_commits<CR>", { desc = "Telescope Git commits" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Telescope Git status" })
 map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "Telescope Pick hidden term" })
 map("n", "<leader>fc", "<cmd>Telescope themes<CR>", { desc = "Telescope Nvchad themes" })
