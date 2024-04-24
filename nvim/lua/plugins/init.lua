@@ -290,7 +290,7 @@ return {
   {
     "NvChad/nvim-colorizer.lua",
     keys = { "<leader>pc" },
-    ft = { "css", "ts", "tsx" },
+    ft = { "css", "typescript", "typescriptreact" },
     opts = { user_default_options = { names = false } },
     config = function(_, opts)
       require("colorizer").setup(opts)
@@ -340,6 +340,7 @@ return {
     branch = "nightly",
     cmd = "Neogit",
     dependencies = {
+      "nvim-treesitter/nvim-treesitter",
       "sindrets/diffview.nvim", -- optional - Diff integration
       "ibhagwan/fzf-lua", -- optional
     },
