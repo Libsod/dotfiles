@@ -142,7 +142,7 @@ M.rust_analyzer_on_init = function(client, _)
   map(
     "n",
     "<leader>rd",
-    ":RustLsp renderdiagnostic<CR>",
+    ":RustLsp renderDiagnostic<CR>",
     { silent = true, noremap = true, desc = "[RustLsp] render diagnostic" }
   )
   map(
