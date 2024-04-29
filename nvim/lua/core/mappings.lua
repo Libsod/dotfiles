@@ -231,3 +231,77 @@ map("n", "<leader>nn", ":NoiceDismiss<CR>", { silent = true, noremap = true })
 
 -- Tabout
 map("i", "<C-f>", "<Tab>", { silent = true, noremap = true })
+
+-- Neotest
+map(
+  "n",
+  "<leader>nrr",
+  ":lua require('neotest').run.run()<CR>",
+  { silent = true, noremap = true, desc = "Run the nearest test" }
+)
+map(
+  "n",
+  "<leader>nrf",
+  ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>",
+  { silent = true, noremap = true, desc = "Run the current file" }
+)
+map(
+  "n",
+  "<leader>nrl",
+  ":lua require('neotest').run.run_last()<CR>",
+  { silent = true, noremap = true, desc = "Run the last test that was run with the same arguments and strategy" }
+)
+map(
+  "n",
+  "<leader>nrs",
+  ":lua require('neotest').run.stop()<CR>",
+  { silent = true, noremap = true, desc = "Stop a running test" }
+)
+map(
+  "n",
+  "<leader>nra",
+  ":lua require('neotest').run.attach()<CR>",
+  { silent = true, noremap = true, desc = "Attach to a running test" }
+)
+map(
+  "n",
+  "<leader>nwt",
+  ":lua require('neotest').watch.toggle()<CR>",
+  { silent = true, noremap = true, desc = "Toggle watching a pos and run it whenever related files are changed" }
+)
+map(
+  "n",
+  "<leader>nws",
+  ":lua require('neotest').watch.stop()<CR>",
+  { silent = true, noremap = true, desc = "Stop watching a position" }
+)
+map(
+  "n",
+  "<leader>not",
+  ":lua require('neotest').output_panel.toggle()<CR>",
+  { silent = true, noremap = true, desc = "Toggle the output panel" }
+)
+map(
+  "n",
+  "<leader>noc",
+  ":lua require('neotest').output_panel.clear()<CR>",
+  { silent = true, noremap = true, desc = "Clears the output panel" }
+)
+map(
+  "n",
+  "<leader>ns",
+  ":lua require('neotest').summary.toggle()<CR>",
+  { silent = true, noremap = true, desc = "Toggle the summary window" }
+)
+map(
+  "n",
+  "<leader>njn",
+  ":lua require('neotest').jump.next()<CR>",
+  { silent = true, noremap = true, desc = "Jump to the next test" }
+)
+map(
+  "n",
+  "<leader>njp",
+  ":lua require('neotest').jump.prev()<CR>",
+  { silent = true, noremap = true, desc = "Jump to the prev test" }
+)

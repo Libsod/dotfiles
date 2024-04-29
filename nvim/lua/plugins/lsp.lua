@@ -39,4 +39,22 @@ return {
     "ray-x/lsp_signature.nvim",
     event = { "LspAttach" },
   },
+
+  {
+    "nvim-neotest/neotest",
+    config = function()
+      require "configs.lsp.neotest"
+    end,
+    dependencies = {
+      -- Built-in
+      "nvim-neotest/nvim-nio",
+      "antoinemadec/FixCursorHold.nvim",
+
+      -- Zig
+      { "lawrence-laz/neotest-zig", branch = "v1.2.0" },
+
+      -- Python
+      "nvim-neotest/neotest-python",
+    },
+  },
 }
