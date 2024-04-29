@@ -165,7 +165,7 @@ map("n", "<leader>fc", "<cmd>Telescope themes<CR>", { desc = "Telescope Nvchad t
 map("n", "<leader>o", ":Oil --float<CR>", { silent = true, noremap = true })
 
 -- Bufdelete
-map("n", "<leader>d", ":BufDel<CR>", { silent = true, noremap = true })
+map("n", "<leader>dd", ":BufDel<CR>", { silent = true, noremap = true })
 
 -- Toggle Inlay Hints
 map(
@@ -227,7 +227,7 @@ map(
 )
 
 -- Noice
-map("n", "<leader>nn", ":NoiceDismiss<CR>", { silent = true, noremap = true })
+map("n", "<leader>dn", ":NoiceDismiss<CR>", { silent = true, noremap = true })
 
 -- Tabout
 map("i", "<C-f>", "<Tab>", { silent = true, noremap = true })
@@ -311,3 +311,25 @@ map(
   ":lua require('neotest').jump.prev()<CR>",
   { silent = true, noremap = true, desc = "Jump to the prev test" }
 )
+
+-- Neoconf
+map("n", "<leader>ncf", ":Neoconf<CR>", { silent = true, desc = "Select one of the config files to edit" })
+map("n", "<leader>ncl", ":Neoconf local<CR>", { silent = true, desc = "Select one of the local config files to edit" })
+map(
+  "n",
+  "<leader>ncg",
+  ":Neoconf global<CR>",
+  { silent = true, desc = "Select one of the global config files to edit" }
+)
+map("n", "<leader>ncs", ":Neoconf show<CR>", { silent = true, desc = "Opens a floating window with the merged config" })
+map(
+  "n",
+  "<leader>ncp",
+  ":Neoconf lsp<CR>",
+  { silent = true, desc = "Opens a floating window with your merged lsp config" }
+)
+
+-- Treesj
+map("n", "gm", "<Cmd>TSJToggle<CR>", { silent = true, desc = "Toggle node under cursor" })
+map("n", "gS", "<Cmd>TSJSplit<CR>", { silent = true, desc = "Split node under cursor" })
+map("n", "gJ", "<Cmd>TSJJoin<CR>", { silent = true, desc = "Join node under cursor" })
