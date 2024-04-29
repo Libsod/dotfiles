@@ -277,6 +277,12 @@ map(
 )
 map(
   "n",
+  "<leader>noo",
+  ":lua require('neotest').output.open({enter = true})<CR>",
+  { silent = true, noremap = true, desc = "Open the output of a test result" }
+)
+map(
+  "n",
   "<leader>not",
   ":lua require('neotest').output_panel.toggle()<CR>",
   { silent = true, noremap = true, desc = "Toggle the output panel" }
