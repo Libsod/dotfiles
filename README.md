@@ -1,1 +1,1 @@
-# Qwislet's dotfiles
+# My dotfiles
