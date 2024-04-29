@@ -28,8 +28,8 @@ require("lazy").setup({
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
-require "autocmds"
-require "options"
+require "core.autocmds"
+require "core.options"
 
 local function neovide_config()
   vim.o.guifont = "Iosevka Nerd Font:h20"
@@ -68,5 +68,5 @@ neovide_config()
 clipboard_config()
 
 vim.schedule(function()
-  require "mappings"
+  require "core.mappings"
 end)

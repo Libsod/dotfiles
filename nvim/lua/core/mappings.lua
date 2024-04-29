@@ -32,6 +32,9 @@ map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "Copy whole file" })
 map("n", "<C-p>", "G$vgg0", { desc = "Select whole file" })
 
+-- Replace visually selected text
+map("v", "<leader>sc", '"hy:%s/<C-r>h//g<Left><Left>')
+
 -- Formatting
 map("n", "<leader>fm", function()
   require("conform").format { lsp_fallback = true }
@@ -141,7 +144,7 @@ map(
   "n",
   "<leader>ff",
   ":Telescope find_files follow=true no_ignore=false hidden=true <CR>",
-  { silent = true, noremap = true, desc = "Find all" }
+  { silent = true, noremap = true, desc = "Find files" }
 )
 map("n", "<leader>ft", ":TodoTelescope<CR>", { silent = true, noremap = true })
 map("n", "<leader>fg", ":Telescope grep_string<CR>", { silent = true, noremap = true })
@@ -157,7 +160,6 @@ map("n", "<leader>gm", "<cmd>Telescope git_commits<CR>", { desc = "Telescope Git
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Telescope Git status" })
 map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "Telescope Pick hidden term" })
 map("n", "<leader>fc", "<cmd>Telescope themes<CR>", { desc = "Telescope Nvchad themes" })
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Telescope Find files" })
 
 -- Oil
 map("n", "<leader>o", ":Oil --float<CR>", { silent = true, noremap = true })

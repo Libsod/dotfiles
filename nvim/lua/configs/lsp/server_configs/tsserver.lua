@@ -1,6 +1,6 @@
-local on_attach = require("configs.lspconfig").on_attach
-local on_init = require("configs.lspconfig").tsserver_on_init
-local capabilities = require("configs.lspconfig").capabilities
+local on_attach = require("configs.lsp.lspconfig").on_attach
+local on_init = require("configs.lsp.lspconfig").tsserver_on_init
+local capabilities = require("configs.lsp.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 
