@@ -3,6 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     event = "User FilePost",
     config = function()
+      require("neodev").setup {}
       require("configs.lsp.lspconfig").defaults()
       require "configs.lsp.server_configs.lspsetup"
     end,
@@ -42,6 +43,9 @@ return {
 
   {
     "nvim-neotest/neotest",
+    keys = {
+      "<leader>n",
+    },
     config = function()
       require "configs.lsp.neotest"
     end,
@@ -55,6 +59,15 @@ return {
 
       -- Python
       "nvim-neotest/neotest-python",
+    },
+  },
+
+  {
+    "folke/neodev.nvim",
+    ft = { "lua" },
+    opts = {},
+    dependencies = {
+      "folke/neoconf.nvim",
     },
   },
 }
