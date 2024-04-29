@@ -19,6 +19,25 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = "*",
+  callback = function()
+    local map = vim.keymap.set
+    local langs = require("treesj.langs")["presets"]
+    local opts = { buffer = true }
+
+    if langs[vim.bo.filetype] then
+      map("n", "gm", "<Cmd>TSJToggle<CR>", opts)
+      map("n", "gS", "<Cmd>TSJSplit<CR>", opts)
+      map("n", "gJ", "<Cmd>TSJJoin<CR>", opts)
+    else
+      map("n", "gm", "<Cmd>TSJToggle<CR>", opts)
+      map("n", "gS", "<Cmd>SplitjoinSplit<CR>", opts)
+      map("n", "gJ", "<Cmd>SplitjoinJoin<CR>", opts)
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd("BufRead", {
   group = vim.api.nvim_create_augroup("CargoKeymaps", { clear = true }),
   pattern = "Cargo.toml",

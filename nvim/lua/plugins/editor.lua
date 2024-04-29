@@ -105,4 +105,12 @@ return {
       require "configs.editor.ts-autotag"
     end,
   },
+
+  {
+    "Wansmer/treesj",
+    keys = { "gm", "gJ", "gS" },
+    config = function()
+      require("treesj").setup { use_default_keymaps = false }
+    end,
+  },
 }
