@@ -135,7 +135,6 @@ return {
   {
     "NeogitOrg/neogit",
     branch = "nightly",
-    commit = "df527d1",
     cmd = "Neogit",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
