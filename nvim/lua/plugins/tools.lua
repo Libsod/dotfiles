@@ -169,4 +169,16 @@ return {
       require "configs.tools.tabout"
     end,
   },
+
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    event = {
+      "BufReadPre " .. vim.fn.expand "~" .. "/notes/**.md",
+      "BufNewFile " .. vim.fn.expand "~" .. "/notes/**.md",
+    },
+    config = function()
+      require "configs.tools.obsidian"
+    end,
+  },
 }
