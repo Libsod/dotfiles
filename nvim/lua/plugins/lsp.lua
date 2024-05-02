@@ -50,16 +50,20 @@ return {
       require "configs.lsp.neotest"
     end,
     dependencies = {
-      -- Built-in
       "nvim-neotest/nvim-nio",
       "antoinemadec/FixCursorHold.nvim",
-
-      -- Zig
-      { "lawrence-laz/neotest-zig", branch = "v1.2.0" },
-
-      -- Python
-      "nvim-neotest/neotest-python",
     },
+  },
+
+  {
+    "lawrence-laz/neotest-zig",
+    branch = "v1.2.0",
+    ft = { "zig" },
+  },
+
+  {
+    "nvim-neotest/neotest-python",
+    ft = { "python" },
   },
 
   {
