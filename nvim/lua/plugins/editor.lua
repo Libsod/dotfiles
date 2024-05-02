@@ -100,7 +100,7 @@ return {
 
   {
     "windwp/nvim-ts-autotag",
-    ft = { "html", "xml", "tsx", "astro", "markdown" },
+    ft = { "html", "xml", "typescriptreact", "astro", "markdown" },
     config = function()
       require "configs.editor.ts-autotag"
     end,
