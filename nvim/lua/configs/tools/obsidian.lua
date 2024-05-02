@@ -57,7 +57,7 @@ local options = {
     folder = "dailies",
     date_format = "%Y-%m-%d",
     alias_format = "%B %-d, %Y",
-    template = true,
+    template = nil,
   },
 
   notes_subdir = "",
@@ -83,140 +83,112 @@ local options = {
 
   mappings = {
     -- Oil remap (only for obsidian files)
-    map("n", "<leader>oo", ":Oil --float<CR>", { silent = true }),
+    map("n", "<leader>o", ""),
+    map("n", "<leader>oo", ":Oil --float<CR>", { silent = true, remap = true }),
 
-    map(
-      "n",
-      "<leader>op",
-      ":ObsidianOpen<CR>",
-      { silent = true, expr = true, buffer = true, desc = "Obsidian open in app" }
-    ),
+    map("n", "<leader>op", ":ObsidianOpen<CR>", { silent = true, desc = "Obsidian open in app" }),
 
-    map("n", "<leader>on", ":ObsidianNew ", { silent = true, expr = true, buffer = true, desc = "Create a new note" }),
+    map("n", "<leader>on", ":ObsidianNew ", { silent = true, desc = "Create a new note" }),
 
     map(
       "n",
       "<leader>oq",
       ":ObsidianQuickSwitch<CR>",
-      { silent = true, expr = true, buffer = true, desc = "Quickly switch to another note in vault" }
+      { silent = true, desc = "Quickly switch to another note in vault" }
     ),
 
     map(
       "n",
       "<leader>of",
       ":ObsidianFollowLink<CR>",
-      { silent = true, expr = true, buffer = true, desc = "Follow a note reference under the cursor," }
+      { silent = true, desc = "Follow a note reference under the cursor," }
     ),
 
     map(
       "n",
       "<leader>ob",
       ":ObsidianBacklinks<CR>",
-      { silent = true, expr = true, buffer = true, desc = "Open up a picker list of references to the current buffer" }
+      { silent = true, desc = "Open up a picker list of references to the current buffer" }
     ),
 
     map(
       "n",
       "<leader>otg",
       ":ObsidianTags<CR>",
-      { silent = true, expr = true, buffer = true, desc = "Open up a picker list of all occurrences of the given tags" }
+      { silent = true, desc = "Open up a picker list of all occurrences of the given tags" }
     ),
 
-    map(
-      "n",
-      "<leader>otd",
-      ":ObsidianToday<CR>",
-      { silent = true, expr = true, buffer = true, desc = "Open/create a new daily note" }
-    ),
+    map("n", "<leader>otd", ":ObsidianToday<CR>", { silent = true, desc = "Open/create a new daily note" }),
 
     map(
       "n",
       "<leader>oy",
       ":ObsidianYesterday<CR>",
-      { silent = true, expr = true, buffer = true, desc = "Open/create the daily note for yesterday" }
+      { silent = true, desc = "Open/create the daily note for yesterday" }
     ),
 
     map(
       "n",
       "<leader>otm",
       ":ObsidianTomorrow<CR>",
-      { silent = true, expr = true, buffer = true, desc = "Open/create the daily note for tomorrow" }
+      { silent = true, desc = "Open/create the daily note for tomorrow" }
     ),
 
-    map(
-      "n",
-      "<leader>od",
-      ":ObsidianDailies ",
-      { silent = true, expr = true, buffer = true, desc = "Open up a picker list of daily notes" }
-    ),
+    map("n", "<leader>od", ":ObsidianDailies ", { silent = true, desc = "Open up a picker list of daily notes" }),
 
     map(
       "n",
       "<leader>ott",
       ":ObsidianTemplate<CR>",
-      { silent = true, expr = true, buffer = true, desc = "Insert a template from the templates folder" }
+      { silent = true, desc = "Insert a template from the templates folder" }
     ),
 
     map(
       "n",
       "<leader>os",
       ":ObsidianSearch<CR>",
-      { silent = true, expr = true, buffer = true, desc = "Insert a template from the templates folder" }
+      { silent = true, desc = "Insert a template from the templates folder" }
     ),
 
     map(
       "n",
       "<leader>oll",
       ":ObsidianLink ",
-      { silent = true, expr = true, buffer = true, desc = "Link an inline visual selection of text to a note" }
+      { silent = true, desc = "Link an inline visual selection of text to a note" }
     ),
 
     map("n", "<leader>oln", ":ObsidianLinkNew ", {
       silent = true,
-      expr = true,
-      buffer = true,
       desc = "Create a new note and link it to an inline visual selection of text",
     }),
 
     map("n", "<leader>ola", ":ObsidianLinks<CR>", {
       silent = true,
-      expr = true,
-      buffer = true,
       desc = "Collect all links within the current buffer into a picker window",
     }),
 
     map("n", "<leader>oe", ":ObsidianExtractNote ", {
       silent = true,
-      expr = true,
-      buffer = true,
       desc = "Extract the visually selected text into a new note and link to it",
     }),
 
     map("n", "<leader>ow", ":ObsidianWorkspace ", {
       silent = true,
-      expr = true,
-      buffer = true,
       desc = "Switch to another workspace",
     }),
 
     map("n", "<leader>oi", ":ObsidianPasteImg ", {
       silent = true,
-      expr = true,
-      buffer = true,
       desc = "Paste an image from the clipboard into the note at the cursor position",
     }),
 
     map("n", "<leader>or", ":ObsidianRename ", {
       silent = true,
-      expr = true,
-      buffer = true,
       desc = "Rename the note of the current buffer or reference under the cursor",
     }),
 
     map("n", "<leader>otc", ":ObsidianToggleCheckbox<CR>", {
       silent = true,
-      expr = true,
-      buffer = true,
       desc = "Toggle checkbox options",
     }),
   },
