@@ -330,6 +330,9 @@ map(
 )
 
 -- Treesj
-map("n", "gm", "<Cmd>TSJToggle<CR>", { silent = true, desc = "Toggle node under cursor" })
-map("n", "gS", "<Cmd>TSJSplit<CR>", { silent = true, desc = "Split node under cursor" })
-map("n", "gJ", "<Cmd>TSJJoin<CR>", { silent = true, desc = "Join node under cursor" })
+map("n", "gm", ":TSJToggle<CR>", { silent = true, desc = "Toggle node under cursor" })
+map("n", "gS", ":TSJSplit<CR>", { silent = true, desc = "Split node under cursor" })
+map("n", "gJ", ":TSJJoin<CR>", { silent = true, desc = "Join node under cursor" })
+
+-- Markdown-preview
+map("n", "<leader>mt", ":MarkdownPreviewToggle<CR>", { silent = true, desc = "Markdown-preview toggle" })
