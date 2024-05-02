@@ -1,3 +1,4 @@
 [submodule "nvim"]
 	path = nvim
-	url = https://github.com/Libsod/config.nvim.git
+  url = https://github.com/Libsod/config.nvim.git
+  branch = main
