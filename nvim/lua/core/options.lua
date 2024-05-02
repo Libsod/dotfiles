@@ -17,6 +17,7 @@ opt.autoindent = true
 opt.autoread = true
 opt.autowrite = true
 opt.backup = false
+opt.conceallevel = 2
 opt.writebackup = false
 opt.backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim"
 opt.swapfile = false
