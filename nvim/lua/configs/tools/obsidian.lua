@@ -54,7 +54,7 @@ local options = {
   end,
 
   daily_notes = {
-    folder = "notes/dailies",
+    folder = "dailies",
     date_format = "%Y-%m-%d",
     alias_format = "%B %-d, %Y",
     template = true,
