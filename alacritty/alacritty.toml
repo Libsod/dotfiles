@@ -1,0 +1,87 @@
+live_config_reload = true
+
+[bell]
+animation = "EaseOutExpo"
+color = "0xffffff"
+duration = 0
+
+[cursor]
+style = { shape = "Block", blinking = "Never" }
+vi_mode_style = { shape = "Block", blinking = "Never" }
+unfocused_hollow = true
+
+[debug]
+log_level = "OFF"
+persistent_logging = false
+print_events = false
+render_timer = false
+
+[font]
+size = 20.0
+
+[font.normal]
+family = "Iosevka Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "Iosevka Nerd Font"
+style = "Bold"
+
+[font.offset]
+x = 0
+y = 14
+
+[font.glyph_offset]
+x = 0
+y = 7
+
+[font.italic]
+family = "Iosevka Nerd Font"
+style = "Italic"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 2000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+decorations = "buttonless"
+opacity = 1.0
+startup_mode = "windowed"
+
+[window.padding]
+x = 10
+y = 10
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.primary]
+background = "0x0f0f0f"
+foreground = "0xf0f0f0"
+
+[colors.normal]
+black = "0x262626"
+red = "0xac8a8c"
+green = "0x8aac8b"
+yellow = "0xaca98a"
+blue = "0x8f8aac"
+magenta = "0xac8aac"
+cyan = "0x8aabac"
+white = "0xe7e7e7"
+
+[colors.bright]
+black = "0x4c4c4c"
+red = "0xc49ea0"
+green = "0x9ec49f"
+yellow = "0xc4c19e"
+blue = "0xa39ec4"
+magenta = "0xc49ec4"
+cyan = "0x9ec3c4"
+white = "0xf5f5f5"
