@@ -27,10 +27,10 @@ shift + alt - m : yabai -m window --toggle zoom-fullscreen
 shift + alt - u : yabai -m window --toggle zoom-parent
 
 # resize alacritty
-# ctrl + alt - t : yabai -m window --toggle float && yabai -m space --layout float && yabai -m window --resize abs:1740:1076
+ctrl + alt - t : yabai -m window --toggle float && yabai -m space --layout float && yabai -m window --resize abs:1740:1076
 
 # resize kitty
-ctrl + alt - t : yabai -m window --toggle float && yabai -m space --layout float && yabai -m window --resize abs:1740:1092
+# ctrl + alt - t : yabai -m window --toggle float && yabai -m space --layout float && yabai -m window --resize abs:1740:1092
 
 # resize neovide
 ctrl + alt - n : yabai -m window --toggle float && yabai -m space --layout float && yabai -m window --resize abs:1750:1088
