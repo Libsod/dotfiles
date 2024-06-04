@@ -1,0 +1,9 @@
+# Fish related files 
+fish/functions/fisher.fish
+fish/completions/
+fish/conf_d
+fish/themes
+fish/fish_history
+
+# Btop 
+btop/
