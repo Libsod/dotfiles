@@ -26,6 +26,7 @@ alias fish_usr_paths='echo $fish_user_paths | tr " " "\n" | nl'
 alias testnvim="NVIM_APPNAME=testnvim nvim"
 alias yanvim="NVIM_APPNAME=nvimdots nvim"
 alias zbr="zig build run"
+alias zr="zig run"
 alias td="turbo dev"
 
 set -x PATH "$HOME/.local/bin" $PATH
