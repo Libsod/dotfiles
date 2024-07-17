@@ -8,20 +8,20 @@ If:
   PathMatch: .*\.c
 CompileFlags:
   Add: [-xc, -Wall, -std=c17]
-  Compiler: clang++
+  Compiler: clang
 ---
 Index:
   Background: Build
 
 Hover:
-  ShowAKA: Yes
+  ShowAKA: true
 
 InlayHints:
-  BlockEnd: No
-  Designators: Yes
-  Enabled: Yes
-  ParameterNames: Yes
-  DeducedTypes: Yes
+  BlockEnd: false
+  Designators: true
+  Enabled: false
+  ParameterNames: true
+  DeducedTypes: true
 
 Diagnostics:
   UnusedIncludes: Strict
