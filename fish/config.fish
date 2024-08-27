@@ -28,6 +28,8 @@ alias zbr="zig build run"
 alias zr="zig run"
 alias td="turbo dev"
 
+bind \cz toggle_nvim
+
 set -x PATH "$HOME/.local/bin" $PATH
 set -g STARSHIP_CONFIG ~/.config/starship/starship.toml
 set -x HISTFILE ~/.config/fish/fish_history

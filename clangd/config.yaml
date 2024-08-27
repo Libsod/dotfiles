@@ -1,13 +1,13 @@
 If:
   PathMatch: .*\.cpp
 CompileFlags:
-  Add: [-xc++, -Wall, -std=c++20]
+  Add: [-xc++, -Wall, -std=c++23]
   Compiler: clang++
 ---
 If:
   PathMatch: .*\.c
 CompileFlags:
-  Add: [-xc, -Wall, -std=c17]
+  Add: [-xc, -Wall, -std=c23]
   Compiler: clang
 ---
 Index:

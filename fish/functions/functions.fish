@@ -17,3 +17,13 @@ function fsd -d "Change directory via cd & fzf"
     cd $tmp_dir
   end
 end
+
+function toggle_nvim -d "Minimize and maximize neovim"
+  set job_id (jobs | grep 'nvim' | grep -Eo '^[0-9]+')
+
+  if test -n "$job_id"
+    fg %$job_id > /dev/null 2>&1
+    commandline -f repaint
+  end
+end
+

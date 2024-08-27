@@ -7,8 +7,8 @@ local config = {
 	-- font = wezterm.font_with_fallback({ "JetBrainsMono Nerd Font" }),
 	-- font = wezterm.font_with_fallback({ "Dank Mono", "JetBrainsMono Nerd Font" }),
 
-	font_size = 20,
-	line_height = 1.3,
+	font_size = 19,
+	line_height = 1.1,
 
 	initial_cols = 81,
 	initial_rows = 15,
@@ -25,7 +25,7 @@ local config = {
 	},
 
 	-- Theme settings
-	color_scheme = "Mountain_dark",
+	color_scheme = "Catppuccin Mocha",
 	color_schemes = {
 		["Mountain_dark"] = {
 			foreground = "#f0f0f0",
