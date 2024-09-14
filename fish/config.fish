@@ -27,6 +27,10 @@ alias fish_usr_paths='echo $fish_user_paths | tr " " "\n" | nl'
 alias zbr="zig build run"
 alias zr="zig run"
 alias td="turbo dev"
+alias cr="cargo run"
+alias crr="cargo run --release"
+alias cb="cargo build"
+alias cc="cargo clippy -- -Wclippy::all -Wclippy::pedantic -Wclippy::cargo"
 
 bind \cz toggle_nvim
 
