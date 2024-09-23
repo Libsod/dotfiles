@@ -8,7 +8,7 @@ alias ll="eza -1 -l -a -g --icons --git"
 alias llt="eza -1 -a --icons --tree --level=2 --git-ignore"
 alias scf="source ~/.config/fish/config.fish"
 alias la="ls -la"
-alias bu="brew update && brew upgrade && brew upgrade --cask"
+alias update="brew update && brew upgrade && brew upgrade --cask && rustup update && nvim --headless '+Lazy! sync' +qa"
 alias v="nvim"
 alias nv="neovide --title-hidden"
 alias vfsh="nvim ~/.config/fish/config.fish"
@@ -31,6 +31,9 @@ alias cr="cargo run"
 alias crr="cargo run --release"
 alias cb="cargo build"
 alias cc="cargo clippy -- -Wclippy::all -Wclippy::pedantic -Wclippy::cargo"
+alias dr="dotnet run"
+alias drr="dotnet run --configuration Release"
+alias db="dotnet build"
 
 bind \cz toggle_nvim
 
