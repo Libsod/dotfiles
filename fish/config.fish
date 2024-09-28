@@ -34,6 +34,7 @@ alias cc="cargo clippy -- -Wclippy::all -Wclippy::pedantic -Wclippy::cargo"
 alias dr="dotnet run"
 alias drr="dotnet run --configuration Release"
 alias db="dotnet build"
+alias cg="cmake . --toolchain ~/.vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake"
 
 bind \cz toggle_nvim
 
