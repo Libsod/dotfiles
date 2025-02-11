@@ -1,0 +1,55 @@
+#!/usr/bin/env fish
+
+set preset_file "CMakePresets.json"
+
+if not test -f $preset_file
+    echo "Generating $preset_file..."
+    echo '{
+  "version": 3,
+  "cmakeMinimumRequired": { "major": 3, "minor": 19, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "debug",
+      "description": "Debug build with symbols",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/Debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_TOOLCHAIN_FILE": "~/.vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    },
+    {
+      "name": "release",
+      "description": "Optimized release build",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/Release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_CXX_FLAGS_RELEASE": "-O3 -flto-jobs=0 -flto=thin -march=native",
+        "CMAKE_TOOLCHAIN_FILE": "~/.vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    },
+    {
+      "name": "releasesmall",
+      "description": "Small binary release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/ReleaseSmall",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "MinSizeRel",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_TOOLCHAIN_FILE": "~/.vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "debug", "configurePreset": "debug" },
+    { "name": "release", "configurePreset": "release" },
+    { "name": "releasesmall", "configurePreset": "releasesmall" }
+  ]
+}' > $preset_file
+    echo "CMakePresets.json generated!"
+else
+    echo "CMakePresets.json already exists."
+end

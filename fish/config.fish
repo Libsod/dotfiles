@@ -34,10 +34,10 @@ alias ccl="cargo clippy -- -Wclippy::all -Wclippy::pedantic -Wclippy::cargo"
 alias dr="dotnet run"
 alias drr="dotnet run --configuration Release"
 alias db="dotnet build"
-alias cgd="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --toolchain ~/.vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake -S . -B ./build/Debug/ && ln -sf ./build/Debug/compile_commands.json ./"
-alias cgr="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --toolchain ~/.vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake -S . -B ./build/Release/ && ln -sf ./build/Release/compile_commands.json ./"
-alias cbd="cmake --build ./build/Debug/ --target all -j 10"
-alias cbr="cmake --build ./build/Release/ --target all -j 10"
+alias cgd="gcp && cmake --preset debug && ln -sf ./build/Debug/compile_commands.json ./"
+alias cgr="gcp && cmake --preset release && ln -sf ./build/Release/compile_commands.json ./"
+alias cbd="cmake --build --preset debug --target all -j 10"
+alias cbr="cmake --build --preset release --target all -j 10"
 
 bind \cz toggle_nvim
 
