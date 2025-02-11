@@ -28,11 +28,7 @@ function toggle_nvim -d "Minimize and maximize neovim"
 end
 
 function CMake_build_and_run_debug
-    set project_name (pcregrep -o1 'set\(\s*PROJECT_NAME\s+"([^\s]+)"\s*\)' CMakeLists.txt)
-
-    if test -z "$project_name"
-        set project_name (pcregrep -o1 'project\s*\(\s*([^\s)]+)\s*\)' CMakeLists.txt)
-    end
+    set project_name (pcregrep -o1 -o2 -o3 'set\s*\(\s*PROJECT_NAME\s*"([^"]+)"\s*\)|set\s*\(\s*PROJECT_NAME\s*([^\s)]+)\s*\)|project\s*\(\s*([^\s)]+)\s*\)' CMakeLists.txt | head -n 1)
 
     set executable_name (pcregrep -o1 "add_executable\s*\(\s*\${PROJECT_NAME}\s+([^\s]+)\s*\)" CMakeLists.txt)
 
@@ -63,11 +59,7 @@ end
 
 
 function CMake_build_and_run_release
-    set project_name (pcregrep -o1 'set\(\s*PROJECT_NAME\s+"([^\s]+)"\s*\)' CMakeLists.txt)
-
-    if test -z "$project_name"
-        set project_name (pcregrep -o1 'project\s*\(\s*([^\s)]+)\s*\)' CMakeLists.txt)
-    end
+    set project_name (pcregrep -o1 -o2 -o3 'set\s*\(\s*PROJECT_NAME\s*"([^"]+)"\s*\)|set\s*\(\s*PROJECT_NAME\s*([^\s)]+)\s*\)|project\s*\(\s*([^\s)]+)\s*\)' CMakeLists.txt | head -n 1)
 
     set executable_name (pcregrep -o1 "add_executable\s*\(\s*\${PROJECT_NAME}\s+([^\s]+)\s*\)" CMakeLists.txt)
 
