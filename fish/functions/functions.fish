@@ -27,3 +27,71 @@ function toggle_nvim -d "Minimize and maximize neovim"
   end
 end
 
+function CMake_build_and_run_debug
+    set project_name (pcregrep -o1 'set\(\s*PROJECT_NAME\s+"([^\s]+)"\s*\)' CMakeLists.txt)
+
+    if test -z "$project_name"
+        set project_name (pcregrep -o1 'project\s*\(\s*([^\s)]+)\s*\)' CMakeLists.txt)
+    end
+
+    set executable_name (pcregrep -o1 "add_executable\s*\(\s*\${PROJECT_NAME}\s+([^\s]+)\s*\)" CMakeLists.txt)
+
+    if test -z "$executable_name"
+        set executable_name (pcregrep -o1 "add_executable\s*\(\s*([^\s]+)\s+.*\)" CMakeLists.txt)
+    end
+
+    if test -n "$executable_name"
+        set executable_name (echo $executable_name | sed "s/\${PROJECT_NAME}/$project_name/")
+    end
+
+    if test -n "$executable_name"
+        cgd
+        cbd
+      
+        sleep 0.3
+        cl
+
+        if test -x "./build/Debug/$executable_name"
+            ./build/Debug/$executable_name
+        else
+            echo "Executable $executable_name not found in build directory."
+        end
+    else
+        echo "Executable not found in CMakeLists.txt"
+    end
+end
+
+
+function CMake_build_and_run_release
+    set project_name (pcregrep -o1 'set\(\s*PROJECT_NAME\s+"([^\s]+)"\s*\)' CMakeLists.txt)
+
+    if test -z "$project_name"
+        set project_name (pcregrep -o1 'project\s*\(\s*([^\s)]+)\s*\)' CMakeLists.txt)
+    end
+
+    set executable_name (pcregrep -o1 "add_executable\s*\(\s*\${PROJECT_NAME}\s+([^\s]+)\s*\)" CMakeLists.txt)
+
+    if test -z "$executable_name"
+        set executable_name (pcregrep -o1 "add_executable\s*\(\s*([^\s]+)\s+.*\)" CMakeLists.txt)
+    end
+
+    if test -n "$executable_name"
+        set executable_name (echo $executable_name | sed "s/\${PROJECT_NAME}/$project_name/")
+    end
+
+    if test -n "$executable_name"
+        cgr
+        cbr
+      
+        sleep 0.3
+        cl
+
+        if test -x "./build/Release/$executable_name"
+            ./build/Release/$executable_name
+        else
+            echo "Executable $executable_name not found in build directory."
+        end
+    else
+        echo "Executable not found in CMakeLists.txt"
+    end
+end

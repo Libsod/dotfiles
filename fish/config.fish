@@ -15,7 +15,7 @@ alias vfsh="nvim ~/.config/fish/config.fish"
 alias vstrshp="nvim ~/.config/starship.toml"
 alias vwztrm="nvim ~/.wezterm.lua"
 alias valacr="nvim ~/.config/alacritty/alacritty.toml"
-alias python="python3"
+alias py="python3"
 alias sshadd="ssh-add ~/.ssh/id_rsa"
 alias sshg="ssh -T git@github.com"
 alias cl="clear"
@@ -30,14 +30,21 @@ alias td="turbo dev"
 alias cr="cargo run"
 alias crr="cargo run --release"
 alias cb="cargo build"
-alias cc="cargo clippy -- -Wclippy::all -Wclippy::pedantic -Wclippy::cargo"
+alias ccl="cargo clippy -- -Wclippy::all -Wclippy::pedantic -Wclippy::cargo"
 alias dr="dotnet run"
 alias drr="dotnet run --configuration Release"
 alias db="dotnet build"
-alias cg="cmake . --toolchain ~/.vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake"
+alias cgd="cmake . --toolchain ~/.vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake -B ./build/Debug/"
+alias cgr="cmake . --toolchain ~/.vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake -B ./build/Release/"
+alias cbd="cmake --build ./build/Debug/ --target all -j 10"
+alias cbr="cmake --build ./build/Release/ --target all -j 10"
 
 bind \cz toggle_nvim
+
+alias cmrd="CMake_build_and_run_debug"
+alias cmrr="CMake_build_and_run_release"
 
 set -x PATH "$HOME/.local/bin" $PATH
 set -g STARSHIP_CONFIG ~/.config/starship/starship.toml
 set -x HISTFILE ~/.config/fish/fish_history
+set -Ux MANPAGER "nvim +Man!"

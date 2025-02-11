@@ -17,9 +17,9 @@ Hover:
   ShowAKA: true
 
 InlayHints:
-  BlockEnd: false
+  BlockEnd: true
   Designators: true
-  Enabled: false
+  Enabled: true
   ParameterNames: true
   DeducedTypes: true
 
